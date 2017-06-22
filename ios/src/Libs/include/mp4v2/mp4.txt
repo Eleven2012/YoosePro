@@ -1,0 +1,268 @@
+====================================================================================================================================
+====================================================================================================================================
+说明:
+照以下可以写出在ios上播放的mp4文件，但是以下代码不含控制逻辑。控制逻辑需要自己写。
+控制逻辑需要改进的(仅供参考)三个地方:
+1、视频帧尺寸变化时，是否重写文件
+2、测试vRecvAVHeader1传来的帧率信息是否准确，如果不准确，则MP4WriteSample的第四个参数要根据vRecvAVData1传来的pts计算
+3、写入aac音频时，并不十分同步。如果要音视频同步十分完美，需要再写控制逻辑。
+====================================================================================================================================
+====================================================================================================================================
+
+//attribute
+DWORD g_dwFrameRate = 0;        //视频帧率
+DWORD g_dwVideoHeight = 0;      //视频高
+DWORD g_dwVideoWidth = 0;       //视频宽
+DWORD g_timeScalVideo = 1000;
+DWORD g_timeScalAudio = 8000;
+
+//control
+#define TOTAL_RECORD_FRAME  300
+MP4FileHandle g_mp4FileHandle = MP4_INVALID_FILE_HANDLE;
+FILE* g_accFile = nil;
+DWORD g_countFrame = 0;
+DWORD g_isNeedKeyFrame = YES;
+MP4TrackId g_trackIdVideo = MP4_INVALID_TRACK_ID;
+MP4TrackId g_trackIdAudio = MP4_INVALID_TRACK_ID;
+void* g_pDecoder = nil;
+faacEncHandle g_hFaacEncoder;
+
+DWORD g_channel = 0;                //音频通道数目
+DWORD g_sampleRate = 0;             //音频采样率
+DWORD g_bitWidth = 0;               //音频位宽
+unsigned long g_inputSamples;       //faac编码时所需的原始数据字节数
+unsigned long g_maxOutputBytes;
+
+BYTE* g_pDatePCM = nil;
+unsigned long g_dwPosPcm = 0;
+
+-(BOOL) isKeyFrame:(BYTE*) pVideoData
+{
+    BOOL bIFrame = FALSE;
+    sH264NaluHeader* pH264NaluHder = (sH264NaluHeader*) pVideoData;
+    if( (pH264NaluHder->dwFlag == 0x1000000)
+       && (((pH264NaluHder->bNalu_Type&0x1F) == 0x07) || ((pH264NaluHder->bNalu_Type&0x1F) == 0x05)))  ////0x07:SPS	0x05:I-Pic	 0x01:P/B pic
+    {
+        bIFrame = TRUE;
+    }
+    return bIFrame;
+}
+
+
+void vRecvAVHeader1(sAVInfoType * pAVInfo)
+{
+    if (g_mp4FileHandle != MP4_INVALID_FILE_HANDLE) {
+        MP4Close(g_mp4FileHandle, 0);
+        g_mp4FileHandle = MP4_INVALID_FILE_HANDLE;
+    }
+    
+    g_dwFrameRate = pAVInfo->videoFrameRate;
+    g_dwVideoHeight = pAVInfo->VideoHeight;
+    g_dwVideoWidth = pAVInfo->VideoWidth;
+ 
+    NSString* userId =[UDManager getLoginInfo].contactId;
+    NSString* contactId = [P2PClient sharedClient].callId;
+    NSString* path = [Utils getRecordPathWithUserId:userId contactId:contactId];
+
+    char* string = "isomiso2avc1mp41";
+    g_mp4FileHandle = MP4CreateEx([path UTF8String], 0, 1, 0, "iosm", 0x00000200, &string, 4);
+
+    if (g_mp4FileHandle != MP4_INVALID_FILE_HANDLE) {
+        MP4SetTimeScale(g_mp4FileHandle, 1000);
+        g_countFrame = 0;
+        g_isNeedKeyFrame = YES;
+        
+        WORD bitWidth[] = {8, 16, 32};
+        WORD sampleRate[] = {8000, 11000, 16000, 22000, 24000, 32000, 44000, 48000};
+        int channel[] = {1, 2};
+        
+        g_channel = channel[pAVInfo->AudioMode];
+        g_sampleRate = sampleRate[pAVInfo->AudioSampleRate];
+        g_bitWidth = bitWidth[pAVInfo->AudioBitWidth];
+    }
+}
+
+
+void vRecvAVData1(BYTE *pAudioData, DWORD dwAudioDataLen, DWORD dwFrames, UINT64 u64APTS, BYTE *pVideoData, DWORD dwVideoLen,  UINT64 u64VPTS)
+{    
+    if (g_mp4FileHandle == MP4_INVALID_FILE_HANDLE) {
+        return;
+    }
+    
+    if (dwVideoLen != 0)
+    {
+        BOOL isKeyFrame = [[P2PClient sharedClient] isKeyFrame:pVideoData];
+        if (g_isNeedKeyFrame) {
+            if (!isKeyFrame) {
+                return;
+            }
+            else
+            {
+                //video
+                BYTE* pNualData1 = pVideoData+4;
+                BYTE* pNualData2 = pVideoData+18;
+                g_trackIdVideo = MP4AddH264VideoTrack(g_mp4FileHandle, g_timeScalVideo, MP4_INVALID_DURATION, g_dwVideoWidth, g_dwVideoHeight, pNualData1[1], pNualData1[2], pNualData1[3], 3);
+                if (g_trackIdVideo == MP4_INVALID_TRACK_ID) {
+                    MP4Close(g_mp4FileHandle, 0);
+                    g_mp4FileHandle = MP4_INVALID_FILE_HANDLE;
+                    return;
+                }
+                MP4SetVideoProfileLevel(g_mp4FileHandle, 0x7f);
+                MP4AddH264SequenceParameterSet(g_mp4FileHandle, g_trackIdVideo, (const uint8_t*)pNualData1, 10);
+                MP4AddH264PictureParameterSet(g_mp4FileHandle, g_trackIdVideo, (const uint8_t*)pNualData2, 4);
+
+                //audio
+                g_hFaacEncoder = faacEncOpen(g_sampleRate, g_channel, &g_inputSamples, &g_maxOutputBytes);
+                faacEncConfigurationPtr pConfiguration = faacEncGetCurrentConfiguration(g_hFaacEncoder);
+                if (pConfiguration->version != FAAC_CFG_VERSION) {
+                    NSLog(@"faacEncGetCurrentConfiguration failed");
+                    return;
+                }
+                
+                if (!pConfiguration) {
+                    NSLog(@"faacEncGetCurrentConfiguration failed");
+                    return;
+                }
+                
+                pConfiguration->version = MPEG4;
+                pConfiguration->aacObjectType = LOW;
+                pConfiguration->inputFormat = FAAC_INPUT_16BIT;
+                pConfiguration->outputFormat = 0;     // (0 = Raw; 1 = ADTS)录制MP4文件时，要用raw流。检验编码是否正确时可设置为 adts传输流，
+                pConfiguration->shortctl = SHORTCTL_NORMAL;
+                pConfiguration->useTns = 1;
+                pConfiguration->quantqual = 100;
+                pConfiguration->bandWidth = 0;
+                pConfiguration->bitRate = 0;
+                pConfiguration->allowMidside = 1;
+                faacEncSetConfiguration(g_hFaacEncoder, pConfiguration);
+                
+                g_trackIdAudio = MP4AddAudioTrack(g_mp4FileHandle, g_timeScalAudio, MP4_INVALID_DURATION, MP4_MPEG4_AUDIO_TYPE);
+                if (g_trackIdAudio == MP4_INVALID_TRACK_ID) {
+                    MP4Close(g_mp4FileHandle, 0);
+                    g_mp4FileHandle = MP4_INVALID_FILE_HANDLE;
+                    return;
+                }
+
+                MP4SetAudioProfileLevel(g_mp4FileHandle, 0x2);
+                
+                unsigned char* faacDecoderInfo = NULL;
+                unsigned long  faacDecoderInfoSize = 0;
+                int ret = faacEncGetDecoderSpecificInfo(g_hFaacEncoder, &faacDecoderInfo, &faacDecoderInfoSize);
+                if (ret != 0)
+                {
+                    NSLog(@"faacEncGetDecoderSpecificInfo failed");
+                }
+                
+                if (!MP4SetTrackESConfiguration(g_mp4FileHandle, g_trackIdAudio, faacDecoderInfo, faacDecoderInfoSize))
+                {
+                    NSLog(@"MP4SetTrackESConfiguration failed");
+                }
+                free( faacDecoderInfo );
+                
+                
+                g_pDecoder = Decoder_Interface_init();
+                
+                g_pDatePCM = (BYTE*)malloc(1024*8);
+ 
+                g_isNeedKeyFrame = NO;
+            }
+        }
+        if (g_trackIdVideo != MP4_INVALID_TRACK_ID)
+        {
+            if (NO == isKeyFrame) {
+                BYTE* data = (BYTE*)malloc(dwVideoLen);
+                data[0] = (dwVideoLen-4) >> 24;
+                data[1] = (dwVideoLen-4) >> 16;
+                data[2] = (dwVideoLen-4) >> 8;
+                data[3] = (dwVideoLen-4) & 0xff;
+                memcpy(data+4, pVideoData+4, dwVideoLen-4);
+                MP4WriteSample(g_mp4FileHandle, g_trackIdVideo, data, dwVideoLen, g_timeScalVideo/g_dwFrameRate, 0, 1);
+                free(data);
+            }
+            else
+            {
+                BYTE* data1 = (BYTE*)malloc(9);
+                data1[0] = 5 >> 24;         //除以24次2
+                data1[1] = 5 >> 16;
+                data1[2] = 5 >> 8;
+                data1[3] = 5 & 0xff;
+                int * value = (int*)data1;
+                NSLog(@"data1 = %d, %d, %d, %d, length = %d", data1[0], data1[1], data1[2], data1[3], *value);
+                memcpy(data1+4, pVideoData+22, 5);
+                MP4WriteSample(g_mp4FileHandle, g_trackIdVideo, data1, 9, g_timeScalVideo/g_dwFrameRate, 0, 1);
+                free(data1);
+                
+                BYTE* data2 = (BYTE*)malloc(dwVideoLen-31);
+                data2[0] = (dwVideoLen-35) >> 24;
+                data2[1] = (dwVideoLen-35) >> 16;
+                data2[2] = (dwVideoLen-35) >> 8;
+                data2[3] = (dwVideoLen-35) & 0xff;
+                value = (int*)data2;
+                NSLog(@"data2 = %d, %d, %d, %d, length = %d", data2[0], data2[1], data2[2], data2[3], *value);
+
+                memcpy(data2+4, pVideoData+35, dwVideoLen-35);
+                MP4WriteSample(g_mp4FileHandle, g_trackIdVideo, data2, dwVideoLen-31, g_timeScalVideo/g_dwFrameRate, 0, 1);
+                free(data2);
+            }
+            
+            if (g_countFrame == TOTAL_RECORD_FRAME)
+            {
+                MP4Close(g_mp4FileHandle, 0);
+                g_mp4FileHandle = MP4_INVALID_FILE_HANDLE;
+                g_countFrame = 0;
+                
+            }
+            g_countFrame++;
+            if (g_countFrame % 10 == 0) {
+                NSLog(@"record %d frames", g_countFrame);
+            }
+        }
+    }
+    
+    int inputBytes = g_inputSamples*(16/8);
+    if (dwFrames != 0 && g_isNeedKeyFrame == NO)
+    {
+        for (int i=0; i<dwFrames; i++)
+        {
+            Decoder_Interface_Decode(g_pDecoder, pAudioData+i*32, (short*)(g_pDatePCM+g_dwPosPcm), 0);
+            g_dwPosPcm += 320;
+        }
+        
+        int posTemp = 0;
+        BOOL isEncode = NO;
+        while (g_dwPosPcm >= (posTemp+inputBytes))
+        {
+            isEncode = YES;
+            BYTE buffAAC[768] = {0};
+            int ret = faacEncEncode(g_hFaacEncoder, (int*)(g_pDatePCM+posTemp), g_inputSamples, buffAAC, g_maxOutputBytes);
+            
+            //write
+            uint64_t duration = (g_timeScalAudio*inputBytes*20)/(320*1000);
+            if (ret)
+            {
+                MP4WriteSample(g_mp4FileHandle, g_trackIdAudio, (BYTE*)&buffAAC, ret, duration, 0, 1);
+                NSLog(@"write aac %d byte， duation = %lld", ret, duration);
+            }
+          
+            posTemp += inputBytes;
+            
+        }
+        
+        //编码之后
+        if (g_dwPosPcm > posTemp && isEncode)
+        {
+            int lenReamin = g_dwPosPcm - posTemp;
+            BYTE* buffRemain = (BYTE*)malloc(g_dwPosPcm-posTemp);
+            memcpy(buffRemain, g_pDatePCM+posTemp, lenReamin);
+            memcpy(g_pDatePCM, buffRemain, lenReamin);
+            g_dwPosPcm = lenReamin;
+        }
+    }
+}
+
+typedef struct sH264NaluHeader
+{
+    DWORD  dwFlag;
+    BYTE      bNalu_Type;
+}sH264NaluHeader;
+

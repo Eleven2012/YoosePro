@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/Loading_dialog2_width"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_back"
+    >
+    
+    <RelativeLayout 
+        android:id="@+id/dialog_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/loading_dialog2_content_height"
+        >
+            <ProgressBar
+                android:layout_width="@dimen/progress_width_height"
+                android:layout_height="@dimen/progress_width_height"
+                android:layout_centerInParent="true"
+                android:indeterminateDrawable="@anim/progress_white"
+                style="?android:attr/progressBarStyleLarge" 
+                android:indeterminateDuration="560000"
+                />
+     </RelativeLayout>
+</LinearLayout>

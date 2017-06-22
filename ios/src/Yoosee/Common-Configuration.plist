@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CustomerID</key>
+	<array>
+		<string>0</string>
+		<string>0</string>
+		<string>0</string>
+		<string>0</string>
+		<string>0</string>
+		<string>0</string>
+		<string>0</string>
+		<string>0</string>
+		<string>0</string>
+		<string>0</string>
+	</array>
+	<key>isManualStoreID</key>
+	<false/>
+	<key>ManualStoreID</key>
+	<string>2</string>
+	<key>isLocalAlarmRecord</key>
+	<true/>
+	<key>isSupportZoom</key>
+	<false/>
+	<key>AppleID</key>
+	<string>981863450</string>
+</dict>
+</plist>

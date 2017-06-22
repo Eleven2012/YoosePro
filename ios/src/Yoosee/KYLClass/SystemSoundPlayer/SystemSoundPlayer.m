@@ -1,0 +1,416 @@
+//
+//  SystemSoundPlayer.m
+//  VoIP_iPhone
+//
+//  Created by First Mac on 7/6/11.
+//  Copyright 2011 Cienet. All rights reserved.
+//
+
+#import "SystemSoundPlayer.h"
+#import "RingType.h"
+//#import "Common.h"
+//#import "MtcLog.h"
+
+void SystemSoundCompletionProc(SystemSoundID ssID,
+                               void *clientData) {
+    UInt32 numberOfLoop = *((unsigned int *)clientData);
+    if (numberOfLoop == 0) {
+//        AudioServicesDisposeSystemSoundID(ssID);
+//        NSMutableDictionary *dict = [[NSThread currentThread] threadDictionary];
+//        [dict setObject:[NSNumber numberWithBool:YES] forKey:@"ExitNow"];
+        [[SystemSoundPlayer defaultSystemSoundPlayer] performSelectorOnMainThread:@selector(systemSoundStop)
+                                                                       withObject:nil
+                                                                    waitUntilDone:NO];
+        return;
+    }
+    *((unsigned int *)clientData) = numberOfLoop - 1;
+    AudioServicesPlaySystemSound(ssID);
+}
+
+void AlertSoundCompletionProc(SystemSoundID ssID,
+                               void *clientData) {
+    UInt32 numberOfLoop = *((unsigned int *)clientData);
+    if (numberOfLoop == 0) {
+//        AudioServicesDisposeSystemSoundID(ssID);
+//        NSMutableDictionary *dict = [[NSThread currentThread] threadDictionary];
+//        [dict setObject:[NSNumber numberWithBool:YES] forKey:@"ExitNow"];
+        [[SystemSoundPlayer defaultSystemSoundPlayer] performSelectorOnMainThread:@selector(systemSoundStop)
+                                                                       withObject:nil
+                                                                    waitUntilDone:NO];
+        return;
+    }
+    *((unsigned int *)clientData) = numberOfLoop - 1;
+    AudioServicesPlayAlertSound(ssID);
+}
+
+static SystemSoundPlayer* g_SystemSoundPlayer = nil;
+
+@implementation SystemSoundPlayer
+
+- (id)init {
+    self = [super init];
+    if (self != nil) {
+        ringName_ = [[NSArray alloc] initWithObjects:@"Tone0", @"Tone1", 
+                     @"Tone2", @"Tone3", @"Tone4", @"Tone5", @"Tone6", @"Tone7",
+                     @"Tone8", @"Tone9", @"ToneStar", @"TonePound", @"Ring", 
+                     @"RingBack", @"CallFailed", @"Busy", @"CallWait",
+                     @"Forward", @"Term", @"Held", @"MsgRecv", nil];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [ringName_ release];
+    ringName_ = nil;
+    [self systemSoundStop];
+    [super dealloc];
+}
+
++ (SystemSoundPlayer *)defaultSystemSoundPlayer {
+    if (g_SystemSoundPlayer == nil) {
+        g_SystemSoundPlayer = [[SystemSoundPlayer alloc] init];
+    }
+    return g_SystemSoundPlayer;
+}
+
++ (void)releaseDefaultSystemSoundPlayer {
+    if (g_SystemSoundPlayer != nil) {
+        [g_SystemSoundPlayer systemSoundStop];
+        [g_SystemSoundPlayer release];
+        g_SystemSoundPlayer = nil;
+    }
+}
+
+- (int)systemSoundPlay:(int)type numberOfLoop:(unsigned int)numberOfLoop {
+    
+    //MtcLogDebug("%s SystemSoundPlayer::systemSoundPlay() start", K_GEN_BUSINESS);
+    
+    if (type < 0 || type >= E_RING_SIZE) {
+        return 1;
+    }
+#ifdef NOT_PLAY_SOUND
+    return 1;
+#endif
+    [self systemSoundStop];
+    
+    NSString *name = [ringName_ objectAtIndex:type];
+    NSString *path = [[NSBundle mainBundle]
+                      pathForResource:name ofType:@"wav"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        //MtcLogDebug("%s SystemSoundPlayer::systemSoundPlay() end file at path: %s not exist", K_GEN_BUSINESS , [path UTF8String]);
+        return 1;
+    }
+    
+    //MtcLogDebug("%s SystemSoundPlayer::systemSoundPlay() path: %s", K_GEN_BUSINESS , [path UTF8String]);
+    
+    NSURL *aFileURL = [NSURL fileURLWithPath:path];
+    
+    //calls Core Audio to create a system sound ID.
+    SystemSoundID aSoundID;
+    OSStatus error = AudioServicesCreateSystemSoundID((CFURLRef)aFileURL,
+                                                      &aSoundID);
+    
+    if (error != kAudioServicesNoError) { //failed
+        //MtcLogDebug("%s SystemSoundPlayer::systemSoundPlay() end Error %d loading sound at path: %s", K_GEN_BUSINESS, error, [path UTF8String]);
+        return 1;
+    }
+    
+    systemSound_ = aSoundID;
+    numberOfLoop_ = numberOfLoop;
+    
+    NSNumber *ssID = [[NSNumber alloc] initWithUnsignedInt:systemSound_];
+    NSNumber *loop = [[NSNumber alloc] initWithUnsignedInt:numberOfLoop_];
+    NSArray *array = [[NSArray alloc] initWithObjects:ssID, loop, nil];
+    
+    //MtcLogDebug("%s SystemSoundPlayer::systemSoundPlay() ssID %d loop %d", K_GEN_BUSINESS , systemSound_, numberOfLoop_);
+    
+    systemSoundThread_ = [[NSThread alloc]
+                            initWithTarget:self
+                                  selector:@selector(soundPlayThread:)
+                                    object:array];
+    [systemSoundThread_ start];
+    
+    [ssID release];
+    [loop release];
+    [array release];
+    
+    //identify it as a non ui sound
+//    AudioServicesPropertyID flag = 0; //0 means always play
+//    AudioServicesSetProperty(kAudioServicesPropertyIsUISound,
+//                             sizeof(SystemSoundID),
+//                             &systemSound_,
+//                             sizeof(AudioServicesPropertyID),
+//                             &flag);
+//    AudioServicesAddSystemSoundCompletion(systemSound_,
+//                                          NULL,
+//                                          NULL,
+//                                          SystemSoundCompletionProc,
+//                                          &numberOfLoop_);
+//    
+//    AudioServicesPlaySystemSound(systemSound_);
+    
+//    MtcLogDebug("%s SystemSoundPlayer::systemSoundPlay() end", K_GEN_BUSINESS);
+    return 0;
+}
+
+/**
+ * @brief 播放提示音
+ * 
+ * @param[in] type 铃音类型 numberOfLoop 提示音播放循环次数
+ * @param[out]
+ * @return 1 不播放 0 播放
+ * @note
+ */
+- (int)alertSoundPlay:(int)type numberOfLoop:(unsigned int)numberOfLoop {
+    //MtcLogDebug("%s SystemSoundPlayer::alertSoundPlay() start", K_GEN_BUSINESS);
+    
+//    BOOL isCSCalling = [Common isCSInCalling];
+//    BOOL isPSCalling = [Common currentInCalling];
+//    //来电界面时来IM也禁止提示音
+//    BOOL isPSIncomingCalling = [Common currentIncomingCalling];
+    
+    //在某些场景和条件下，不会播放声音，比如类型不合法，正在cs呼叫或者ps呼叫
+//    if (type < 0 || type >= E_RING_SIZE || isCSCalling || isPSCalling || isPSIncomingCalling) {
+//        //MtcLogDebug("%s SystemSoundPlayer::alertSoundPlay() end not play sound when calling", K_GEN_BUSINESS);
+//        return 1;
+//    }
+#ifdef NOT_PLAY_SOUND
+    //MtcLogDebug("%s SystemSoundPlayer::alertSoundPlay() end not play sound", K_GEN_BUSINESS);
+    return 1;
+#endif
+    [self systemSoundStop];
+    
+    NSString *name = [ringName_ objectAtIndex:type];
+    NSString *path = [[NSBundle mainBundle]
+                      pathForResource:name ofType:@"wav"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        //MtcLogDebug("%s SystemSoundPlayer::alertSoundPlay() end file at path: %s not exist", K_GEN_BUSINESS, [path UTF8String]);
+        return 1;
+    }
+    
+    //MtcLogDebug("%s SystemSoundPlayer::alertSoundPlay() name [%s] path [%s]", K_GEN_BUSINESS, [name UTF8String], [path UTF8String]);
+    
+    NSURL *aFileURL = [NSURL fileURLWithPath:path];
+    
+        //calls Core Audio to create a system sound ID.
+    SystemSoundID aSoundID;
+    OSStatus error = AudioServicesCreateSystemSoundID((CFURLRef)aFileURL,
+                                                      &aSoundID);
+    
+    if (error != kAudioServicesNoError) { //failed
+        //MtcLogDebug("%s SystemSoundPlayer::alertSoundPlay() end Error %d loading sound at path: %s", K_GEN_BUSINESS, error, [path UTF8String]);
+        return 1;
+    }
+    
+    systemSound_ = aSoundID;
+    numberOfLoop_ = numberOfLoop;
+    
+    NSNumber *ssID = [[NSNumber alloc] initWithUnsignedInt:systemSound_];
+    NSNumber *loop = [[NSNumber alloc] initWithUnsignedInt:numberOfLoop_];
+    NSArray *array = [[NSArray alloc] initWithObjects:ssID, loop, nil];
+    
+    //MtcLogDebug("%s SystemSoundPlayer::alertSoundPlay() ssID [%d] loop [%d]", K_GEN_BUSINESS, systemSound_, numberOfLoop_);
+    
+    systemSoundThread_ = [[NSThread alloc] 
+                            initWithTarget:self
+                                  selector:@selector(alertPlayThread:)
+                                    object:array];
+    [systemSoundThread_ start];
+    
+    [ssID release];
+    [loop release];
+    [array release];
+    
+//        //identify it as a non ui sound
+//    AudioServicesPropertyID flag = 0; //0 means always play
+//    AudioServicesSetProperty(kAudioServicesPropertyIsUISound,
+//                             sizeof(SystemSoundID),
+//                             &systemSound_,
+//                             sizeof(AudioServicesPropertyID),
+//                             &flag);
+//    AudioServicesAddSystemSoundCompletion(systemSound_,
+//                                          NULL,
+//                                          NULL,
+//                                          AlertSoundCompletionProc,
+//                                          &numberOfLoop_);
+//    
+//    AudioServicesPlayAlertSound(systemSound_);
+    
+    //MtcLogDebug("%s SystemSoundPlayer::alertSoundPlay() end", K_GEN_BUSINESS);
+    
+    return 0;    
+}
+
+- (void)systemSoundStop {
+    //MtcLogDebug("%s SystemSoundPlayer::systemSoundStop() start", K_GEN_BUSINESS);
+    
+    if (systemSound_ != 0) {
+        
+        //MtcLogDebug("%s SystemSoundPlayer::systemSoundStop() systemSound_ != 0", K_GEN_BUSINESS);
+        
+        AudioServicesRemoveSystemSoundCompletion(systemSound_);
+        AudioServicesDisposeSystemSoundID(systemSound_);
+        systemSound_ = 0;
+        numberOfLoop_ = 0;
+    }
+    
+    //MtcLogDebug("%s SystemSoundPlayer::systemSoundStop() ", K_GEN_BUSINESS);
+    
+    if (systemSoundThread_ != nil) {
+        
+        //MtcLogDebug("%s SystemSoundPlayer::systemSoundStop() systemSoundThread_ != nil", K_GEN_BUSINESS);
+        
+        [self performSelector:@selector(soundPlayStop:)
+                     onThread:systemSoundThread_
+                   withObject:nil
+                waitUntilDone:NO];
+        [systemSoundThread_ release];
+        systemSoundThread_ = nil;
+    }
+    
+    //MtcLogDebug("%s SystemSoundPlayer::systemSoundStop() end", K_GEN_BUSINESS);
+}
+
+- (void)playVibrate:(unsigned int)numberOfLoop {
+#ifdef NOT_PLAY_SOUND
+    return;//modify by angelazhao
+#endif
+    [self systemSoundStop];
+    systemSound_ = kSystemSoundID_Vibrate;
+    numberOfLoop_ = numberOfLoop;
+    AudioServicesAddSystemSoundCompletion(systemSound_,
+                                          NULL,
+                                          NULL,
+                                          SystemSoundCompletionProc,
+                                          &numberOfLoop_);
+    AudioServicesPlaySystemSound(systemSound_);
+}
+
+- (int)soundPlayThread:(id)param {
+    
+    //MtcLogDebug("%s SystemSoundPlayer::soundPlayThread() start", K_GEN_BUSINESS);
+    
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    NSMutableDictionary *dict = [[NSThread currentThread] threadDictionary];
+    BOOL exitNow = NO;
+    [dict setValue:[NSNumber numberWithBool:exitNow] forKey:@"ExitNow"];
+    
+    //MtcLogDebug("%s SystemSoundPlayer::soundPlayThread() exitNow [%d]", K_GEN_BUSINESS, exitNow);
+    
+    NSArray *array = (NSArray *)param;
+    SystemSoundID soundID = [[array objectAtIndex:0] unsignedIntValue];
+    UInt32 loop = [[array objectAtIndex:1] unsignedIntValue];
+    
+    //identify it as a non ui sound
+    AudioServicesPropertyID flag = 0; //0 means always play
+    AudioServicesSetProperty(kAudioServicesPropertyIsUISound,
+                             sizeof(SystemSoundID),
+                             &soundID,
+                             sizeof(AudioServicesPropertyID),
+                             &flag);
+    AudioServicesAddSystemSoundCompletion(soundID,
+                                          [runLoop getCFRunLoop],
+                                          NULL,
+                                          SystemSoundCompletionProc,
+                                          &loop);
+    
+    //MtcLogDebug("%s SystemSoundPlayer::soundPlayThread() ready", K_GEN_BUSINESS);
+    
+    AudioServicesPlaySystemSound(soundID);
+    
+    while (!exitNow) {
+            //[runLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
+        [runLoop runUntilDate:[NSDate date]];
+        exitNow = [[dict valueForKey:@"ExitNow"] boolValue];
+    }
+    
+    //MtcLogDebug("%s SystemSoundPlayer::soundPlayThread() runn over", K_GEN_BUSINESS);
+    
+//    AudioServicesRemoveSystemSoundCompletion(soundID);
+//    AudioServicesDisposeSystemSoundID(soundID);
+    soundID = 0;
+    loop = 0;
+    [pool release];
+    
+    //MtcLogDebug("%s SystemSoundPlayer::soundPlayThread() end", K_GEN_BUSINESS);
+    return 0;
+}
+
+- (int)alertPlayThread:(id)param {
+    
+    //MtcLogDebug("%s SystemSoundPlayer::alertPlayThread() start", K_GEN_BUSINESS);
+    
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    NSMutableDictionary *dict = [[NSThread currentThread] threadDictionary];
+    BOOL exitNow = NO;
+    [dict setValue:[NSNumber numberWithBool:exitNow] forKey:@"ExitNow"];
+    
+    //MtcLogDebug("%s SystemSoundPlayer::alertPlayThread() exitNow [%d]", K_GEN_BUSINESS, exitNow);
+    
+    NSArray *array = (NSArray *)param;
+    SystemSoundID soundID = [[array objectAtIndex:0] unsignedIntValue];
+    UInt32 loop = [[array objectAtIndex:1] unsignedIntValue];
+    
+        //identify it as a non ui sound
+    AudioServicesPropertyID flag = 0; //0 means always play
+    AudioServicesSetProperty(kAudioServicesPropertyIsUISound,
+                             sizeof(SystemSoundID),
+                             &soundID,
+                             sizeof(AudioServicesPropertyID),
+                             &flag);
+    AudioServicesAddSystemSoundCompletion(soundID,
+                                          [runLoop getCFRunLoop],
+                                          NULL,
+                                          AlertSoundCompletionProc,
+                                          &loop);
+    
+    //MtcLogDebug("%s SystemSoundPlayer::alertPlayThread() ready", K_GEN_BUSINESS);
+    
+    AudioServicesPlayAlertSound(soundID);
+    
+    while (!exitNow) {
+        
+        [runLoop runUntilDate:[NSDate date]];
+    
+        exitNow = [[dict valueForKey:@"ExitNow"] boolValue];
+    }
+    
+    //MtcLogDebug("%s SystemSoundPlayer::alertPlayThread() runn over", K_GEN_BUSINESS);
+//    AudioServicesRemoveSystemSoundCompletion(soundID);
+//    AudioServicesDisposeSystemSoundID(soundID);
+    soundID = 0;
+    loop = 0;
+    [pool release];
+    
+    //MtcLogDebug("%s SystemSoundPlayer::alertPlayThread() end", K_GEN_BUSINESS);
+    
+    return 0;
+}
+
+- (int)soundPlayStop:(id)param {
+    
+    NSNumber* temp = [[NSNumber alloc] initWithBool:YES];;
+    
+    [[[NSThread currentThread] threadDictionary] setValue:temp
+                                                   forKey:@"ExitNow"];
+    
+    [temp release];
+    
+    return 0;
+}
+
+- (int)addSystemSoundCompletion:(id)param {
+    return 0;
+}
+
+- (int)addAlertCompletion:(id)param {
+    return 0;
+}
+
+@end

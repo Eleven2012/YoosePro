@@ -1,0 +1,634 @@
+package com.jwkj.adapter;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.zip.Inflater;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.jwkj.CallActivity;
+import com.yoosee.R;
+import com.jwkj.activity.AddContactNextActivity;
+import com.jwkj.data.Contact;
+import com.jwkj.entity.LocalDevice;
+import com.jwkj.fragment.ContactFrag;
+import com.jwkj.global.Constants;
+import com.jwkj.global.FList;
+import com.jwkj.global.MyApp;
+import com.jwkj.global.NpcCommon;
+import com.jwkj.utils.T;
+import com.jwkj.utils.Utils;
+import com.jwkj.widget.HeaderView;
+import com.jwkj.widget.NormalDialog;
+import com.p2p.core.P2PHandler;
+import com.p2p.core.P2PValue;
+
+public class MainAdapter extends BaseAdapter {
+	Context context;
+	private ContactFrag cf;
+
+	public MainAdapter(Context context, ContactFrag cf) {
+		this.context = context;
+		
+		this.cf = cf;
+	}
+
+	class ViewHolder {
+		private HeaderView head;
+		private TextView name;
+		private TextView online_state;
+		private ImageView login_type;
+		private TextView msgCount;
+		private ImageView header_icon_play;
+
+		private RelativeLayout layout_defence_btn;
+		private ImageView image_defence_state;
+		private ProgressBar progress_defence;
+
+		public TextView getMsgCount() {
+			return msgCount;
+		}
+
+		public void setMsgCount(TextView msgCount) {
+			this.msgCount = msgCount;
+		}
+
+		public ImageView getLogin_type() {
+			return login_type;
+		}
+
+		public void setLogin_type(ImageView login_type) {
+			this.login_type = login_type;
+		}
+
+		public TextView getOnline_state() {
+			return online_state;
+		}
+
+		public void setOnline_state(TextView online_state) {
+			this.online_state = online_state;
+		}
+
+		public HeaderView getHead() {
+			return head;
+		}
+
+		public void setHead(HeaderView head) {
+			this.head = head;
+		}
+
+		public TextView getName() {
+			return name;
+		}
+
+		public void setName(TextView name) {
+			this.name = name;
+		}
+
+		public ImageView getHeader_icon_play() {
+			return header_icon_play;
+		}
+
+		public void setHeader_icon_play(ImageView header_icon_play) {
+			this.header_icon_play = header_icon_play;
+		}
+
+		public RelativeLayout getLayout_defence_btn() {
+			return layout_defence_btn;
+		}
+
+		public void setLayout_defence_btn(RelativeLayout layout_defence_btn) {
+			this.layout_defence_btn = layout_defence_btn;
+		}
+
+		public ImageView getImage_defence_state() {
+			return image_defence_state;
+		}
+
+		public void setImage_defence_state(ImageView image_defence_state) {
+			this.image_defence_state = image_defence_state;
+		}
+
+		public ProgressBar getProgress_defence() {
+			return progress_defence;
+		}
+
+		public void setProgress_defence(ProgressBar progress_defence) {
+			this.progress_defence = progress_defence;
+		}
+
+	}
+
+	class ViewHolder2 {
+		public TextView name;
+		public ImageView device_type;
+
+		public TextView getName() {
+			return name;
+		}
+
+		public void setName(TextView name) {
+			this.name = name;
+		}
+
+		public ImageView getDevice_type() {
+			return device_type;
+		}
+
+		public void setDevice_type(ImageView device_type) {
+			this.device_type = device_type;
+		}
+
+	}
+
+	@Override
+	public int getCount() {
+//		int size = FList.getInstance().getUnsetPasswordLocalDevices().size();
+//		return FList.getInstance().size() + size;
+		return FList.getInstance().size();
+	}
+
+	@Override
+	public Contact getItem(int position) {
+		return FList.getInstance().get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+
+	public int getItemViewType(int position) {
+		if(position>=FList.getInstance().size()){
+			return 0;
+		}else{
+			return 1;
+		}
+		
+	}
+	
+	@Override
+    public int getViewTypeCount() {
+        return 2;
+    }
+	
+	@Override
+	public View getView(final int position, View convertView, ViewGroup parent) {
+		int size1 = FList.getInstance().list().size();
+//		显示所有已经添加的设备
+//		if (position < size1) {
+			View view = convertView;
+			final ViewHolder holder;
+			if (null == view) {
+				view = LayoutInflater.from(context).inflate(
+						R.layout.list_contact_item, null);
+				holder = new ViewHolder();
+				HeaderView head = (HeaderView) view
+						.findViewById(R.id.user_icon);
+				holder.setHead(head);
+				TextView name = (TextView) view.findViewById(R.id.user_name);
+				holder.setName(name);
+				TextView onlineState = (TextView) view
+						.findViewById(R.id.online_state);
+				holder.setOnline_state(onlineState);
+				ImageView loginType = (ImageView) view
+						.findViewById(R.id.login_type);
+				holder.setLogin_type(loginType);
+				TextView msgCount = (TextView) view.findViewById(R.id.msgCount);
+				holder.setMsgCount(msgCount);
+				ImageView headerIconPlay = (ImageView) view
+						.findViewById(R.id.header_icon_play);
+				holder.setHeader_icon_play(headerIconPlay);
+
+				RelativeLayout layout_defence_btn = (RelativeLayout) view
+						.findViewById(R.id.layout_defence_btn);
+				holder.setLayout_defence_btn(layout_defence_btn);
+				ImageView image_defence_state = (ImageView) view
+						.findViewById(R.id.image_defence_state);
+				holder.setImage_defence_state(image_defence_state);
+				ProgressBar progress_defence = (ProgressBar) view
+						.findViewById(R.id.progress_defence);
+				holder.setProgress_defence(progress_defence);
+
+				view.setTag(holder);
+			} else {
+				holder = (ViewHolder) view.getTag();
+			}
+
+			final Contact contact = FList.getInstance().get(position);
+			int deviceType = contact.contactType;
+			if (contact.onLineState == Constants.DeviceState.ONLINE) {
+				holder.getHead().updateImage(contact.contactId, false);
+				holder.getOnline_state().setText(R.string.online_state);
+				holder.getOnline_state().setTextColor(
+						context.getResources()
+								.getColor(R.color.text_color_blue));
+				if (contact.contactType == P2PValue.DeviceType.UNKNOWN
+						|| contact.contactType == P2PValue.DeviceType.PHONE) {
+					holder.getLayout_defence_btn().setVisibility(
+							RelativeLayout.GONE);
+				} else {
+					holder.getLayout_defence_btn().setVisibility(
+							RelativeLayout.VISIBLE);
+					if (contact.defenceState == Constants.DefenceState.DEFENCE_STATE_LOADING) {
+						holder.getProgress_defence().setVisibility(
+								RelativeLayout.VISIBLE);
+						holder.getImage_defence_state().setVisibility(
+								RelativeLayout.GONE);
+					} else if (contact.defenceState == Constants.DefenceState.DEFENCE_STATE_ON) {
+						holder.getProgress_defence().setVisibility(
+								RelativeLayout.GONE);
+						holder.getImage_defence_state().setVisibility(
+								RelativeLayout.VISIBLE);
+						holder.getImage_defence_state().setImageResource(
+								R.drawable.ic_defence_on);
+					} else if (contact.defenceState == Constants.DefenceState.DEFENCE_STATE_OFF) {
+						holder.getProgress_defence().setVisibility(
+								RelativeLayout.GONE);
+						holder.getImage_defence_state().setVisibility(
+								RelativeLayout.VISIBLE);
+						holder.getImage_defence_state().setImageResource(
+								R.drawable.ic_defence_off);
+					} else if (contact.defenceState == Constants.DefenceState.DEFENCE_STATE_WARNING_NET) {
+						holder.getProgress_defence().setVisibility(
+								RelativeLayout.GONE);
+						holder.getImage_defence_state().setVisibility(
+								RelativeLayout.VISIBLE);
+						holder.getImage_defence_state().setImageResource(
+								R.drawable.ic_defence_warning);
+					} else if (contact.defenceState == Constants.DefenceState.DEFENCE_STATE_WARNING_PWD) {
+						holder.getProgress_defence().setVisibility(
+								RelativeLayout.GONE);
+						holder.getImage_defence_state().setVisibility(
+								RelativeLayout.VISIBLE);
+						holder.getImage_defence_state().setImageResource(
+								R.drawable.ic_defence_warning);
+					} else if(contact.defenceState==Constants.DefenceState.DEFENCE_NO_PERMISSION){
+						holder.getProgress_defence().setVisibility(
+								RelativeLayout.GONE);
+						holder.getImage_defence_state().setVisibility(
+								RelativeLayout.VISIBLE);
+						holder.getImage_defence_state().setImageResource(
+								R.drawable.limit);
+					}
+				}
+
+			} else {
+				holder.getHead().updateImage(contact.contactId, true);
+				holder.getOnline_state().setText(R.string.offline_state);
+				holder.getOnline_state().setTextColor(
+						context.getResources()
+								.getColor(R.color.text_color_gray));
+				holder.getLayout_defence_btn().setVisibility(
+						RelativeLayout.GONE);
+			}
+
+			switch (deviceType) {
+			case P2PValue.DeviceType.NPC:
+				holder.getLogin_type().setImageResource(
+						R.drawable.ic_device_type_npc);
+				break;
+			case P2PValue.DeviceType.IPC:
+				holder.getLogin_type().setImageResource(
+						R.drawable.ic_device_type_ipc);
+				break;
+			case P2PValue.DeviceType.PHONE:
+				holder.getLogin_type().setImageResource(
+						R.drawable.ic_device_type_phone);
+				break;
+			case P2PValue.DeviceType.DOORBELL:
+				holder.getLogin_type().setImageResource(
+						R.drawable.ic_device_type_door_bell);
+				break;
+			case P2PValue.DeviceType.UNKNOWN:
+				holder.getLogin_type().setImageResource(
+						R.drawable.ic_device_type_unknown);
+				break;
+			default:
+				holder.getLogin_type().setImageResource(
+						R.drawable.ic_device_type_unknown);
+				break;
+			}
+			if (contact.messageCount > 0) {
+				TextView msgCount = holder.getMsgCount();
+				msgCount.setVisibility(RelativeLayout.VISIBLE);
+				if (contact.messageCount > 10) {
+					msgCount.setText("10+");
+				} else {
+					msgCount.setText(contact.messageCount + "");
+				}
+ 
+			} else {
+				holder.getMsgCount().setVisibility(RelativeLayout.GONE);
+			}
+
+			holder.getName().setText(contact.contactName);
+
+			if (deviceType == P2PValue.DeviceType.NPC
+					|| deviceType == P2PValue.DeviceType.IPC
+					|| deviceType == P2PValue.DeviceType.DOORBELL) {
+				holder.getHead().setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View arg0) {
+						// TODO Auto-generated method stub
+						if(null!=FList.getInstance().isContactUnSetPassword(contact.contactId)){
+							return;
+						}
+						if (contact.contactId == null
+								|| contact.contactId.equals("")) {
+							T.showShort(context, R.string.username_error);
+							return;
+						}
+						if (contact.contactPassword == null
+								|| contact.contactPassword.equals("")) {
+							T.showShort(context, R.string.password_error);
+							return;
+						}
+						Intent monitor = new Intent();
+						monitor.setClass(context, CallActivity.class);
+						monitor.putExtra("callId", contact.contactId);
+						monitor.putExtra("contactName", contact.contactName);
+						monitor.putExtra("password", contact.contactPassword);
+						monitor.putExtra("isOutCall", true);
+						monitor.putExtra("type",
+								Constants.P2P_TYPE.P2P_TYPE_MONITOR);
+						monitor.putExtra("contactType", contact.contactType);
+						context.startActivity(monitor);
+					}
+
+				});
+				holder.getHeader_icon_play().setVisibility(
+						RelativeLayout.VISIBLE);
+			} else if (deviceType == P2PValue.DeviceType.PHONE) {
+				holder.getHead().setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View arg0) {
+						// TODO Auto-generated method stub
+						if (contact.contactId == null
+								|| contact.contactId.equals("")) {
+							T.showShort(context, R.string.username_error);
+							return;
+						}
+
+						Intent call = new Intent();
+						call.setClass(context, CallActivity.class);
+						call.putExtra("callId", contact.contactId);
+						call.putExtra("isOutCall", true);
+						call.putExtra("type", Constants.P2P_TYPE.P2P_TYPE_CALL);
+						context.startActivity(call);
+					}
+
+				});
+
+				holder.getHeader_icon_play().setVisibility(
+						RelativeLayout.VISIBLE);
+			} else {
+				if(Integer.parseInt(contact.contactId)<256){
+					holder.getHead().setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View arg0) {
+							// TODO Auto-generated method stub
+							
+								Intent monitor = new Intent();
+								monitor.setClass(context, CallActivity.class);
+								monitor.putExtra("callId", contact.contactId);
+								monitor.putExtra("contactName", contact.contactName);
+								monitor.putExtra("password", contact.contactPassword);
+								monitor.putExtra("isOutCall", true);
+								monitor.putExtra("type",
+										Constants.P2P_TYPE.P2P_TYPE_MONITOR);
+								context.startActivity(monitor);	
+						}
+					});
+				}else{
+					holder.getHead().setOnClickListener(null);
+					holder.getHeader_icon_play().setVisibility(RelativeLayout.GONE);
+				}
+				
+			}
+
+			holder.getLayout_defence_btn().setOnClickListener(
+					new OnClickListener() {
+
+						@Override
+						public void onClick(View arg0) {
+							// TODO Auto-generated method stub
+							if (contact.defenceState == Constants.DefenceState.DEFENCE_STATE_WARNING_NET
+									|| contact.defenceState == Constants.DefenceState.DEFENCE_STATE_WARNING_PWD) {
+								holder.getProgress_defence().setVisibility(
+										RelativeLayout.VISIBLE);
+								holder.getImage_defence_state().setVisibility(
+										RelativeLayout.GONE);
+								P2PHandler.getInstance().getDefenceStates(
+										contact.contactId,
+										contact.contactPassword);
+								FList.getInstance().setIsClickGetDefenceState(
+										contact.contactId, true);
+							} else if (contact.defenceState == Constants.DefenceState.DEFENCE_STATE_ON) {
+								holder.getProgress_defence().setVisibility(
+										RelativeLayout.VISIBLE);
+								holder.getImage_defence_state().setVisibility(
+										RelativeLayout.GONE);
+								P2PHandler
+										.getInstance()
+										.setRemoteDefence(
+												contact.contactId,
+												contact.contactPassword,
+												Constants.P2P_SET.REMOTE_DEFENCE_SET.ALARM_SWITCH_OFF);
+								FList.getInstance().setIsClickGetDefenceState(
+										contact.contactId, true);
+							} else if (contact.defenceState == Constants.DefenceState.DEFENCE_STATE_OFF) {
+								holder.getProgress_defence().setVisibility(
+										RelativeLayout.VISIBLE);
+								holder.getImage_defence_state().setVisibility(
+										RelativeLayout.GONE);
+								P2PHandler
+										.getInstance()
+										.setRemoteDefence(
+												contact.contactId,
+												contact.contactPassword,
+												Constants.P2P_SET.REMOTE_DEFENCE_SET.ALARM_SWITCH_ON);
+								FList.getInstance().setIsClickGetDefenceState(
+										contact.contactId, true);
+							}
+						}
+
+					});
+	        view.setOnTouchListener(new OnTouchListener() {
+				
+				@Override
+				public boolean onTouch(View arg0, MotionEvent arg1) {
+					// TODO Auto-generated method stub
+					Intent it=new Intent();
+					it.setAction(Constants.Action.DIAPPEAR_ADD);
+					context.sendBroadcast(it);
+					return false;
+				}
+			});
+			view.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					LocalDevice localDevice = FList.getInstance().isContactUnSetPassword(contact.contactId);
+					if(null!=localDevice){
+						Contact saveContact = new Contact();
+						saveContact.contactId = localDevice.contactId;
+						saveContact.contactType = localDevice.type;
+						saveContact.messageCount = 0;
+						saveContact.activeUser = NpcCommon.mThreeNum;
+						
+						Intent modify = new Intent();
+						modify.setClass(context, AddContactNextActivity.class);
+						modify.putExtra("isCreatePassword", true);
+	                  	modify.putExtra("contact", saveContact);
+	                  	String mark = localDevice.address.getHostAddress();
+	                  	modify.putExtra("ipFlag", mark.substring(mark.lastIndexOf(".")+1, mark.length()));
+						context.startActivity(modify);
+						return;
+					}
+					
+					cf.showQuickActionBar(arg0, contact);
+				}
+
+			});
+
+			view.setOnLongClickListener(new OnLongClickListener() {
+
+				@Override
+				public boolean onLongClick(View arg0) {
+					// TODO Auto-generated method stub
+
+					NormalDialog dialog = new NormalDialog(context, context
+							.getResources().getString(R.string.delete_contact),
+							context.getResources().getString(
+									R.string.are_you_sure_delete)
+									+ " " + contact.contactId + "?", context
+									.getResources().getString(R.string.delete),
+							context.getResources().getString(R.string.cancel));
+					dialog.setOnButtonOkListener(new NormalDialog.OnButtonOkListener() {
+
+						@Override
+						public void onClick() {
+							// TODO Auto-generated method stub
+							FList.getInstance().delete(contact, position,
+									handler);
+							File file = new File(
+									Constants.Image.USER_HEADER_PATH
+											+ NpcCommon.mThreeNum + "/"
+											+ contact.contactId);
+							Utils.deleteFile(file);
+							if(position==0&&FList.getInstance().size()==0){
+								Intent it=new Intent();
+								it.setAction(Constants.Action.DELETE_DEVICE_ALL);
+								MyApp.app.sendBroadcast(it);
+							}
+						}
+					});
+					dialog.showDialog();
+					return true;
+				}
+
+			});
+			return view;
+//		} else {
+////			显示没有设置密码的的设备
+//			View view = convertView;
+//			final ViewHolder2 holder2;
+//			if (view == null) {
+//				view = LayoutInflater.from(context).inflate(
+//						R.layout.list_contact_item2, null);
+//				holder2 = new ViewHolder2();
+//				TextView name = (TextView) view.findViewById(R.id.user_name);
+//				holder2.setName(name);
+//				ImageView typeImg = (ImageView) view
+//						.findViewById(R.id.login_type);
+//				holder2.setDevice_type(typeImg);
+//				view.setTag(holder2);
+//			} else {
+//				holder2 = (ViewHolder2) view.getTag();
+//			}
+//			final LocalDevice localDevice = FList.getInstance().getUnsetPasswordLocalDevices().get(position - size1);
+//			holder2.name.setText(localDevice.getContactId());
+//			switch (localDevice.getType()) {
+//			case P2PValue.DeviceType.NPC:
+//				holder2.device_type
+//						.setImageResource(R.drawable.ic_device_type_npc);
+//				break;
+//			case P2PValue.DeviceType.IPC:
+//				holder2.device_type
+//						.setImageResource(R.drawable.ic_device_type_ipc);
+//				break;
+//			case P2PValue.DeviceType.DOORBELL:
+//				holder2.device_type
+//						.setImageResource(R.drawable.ic_device_type_door_bell);
+//				break;
+//			case P2PValue.DeviceType.UNKNOWN:
+//				holder2.device_type
+//						.setImageResource(R.drawable.ic_device_type_unknown);
+//				break;
+//			default:
+//				holder2.device_type
+//						.setImageResource(R.drawable.ic_device_type_unknown);
+//				break;
+//			}
+//			view.setOnClickListener(new OnClickListener() {
+//
+//				@Override
+//				public void onClick(View v) {
+////					跳转到设置密码页面
+//					Contact saveContact = new Contact();
+//					saveContact.contactId = localDevice.contactId;
+//					saveContact.contactType = localDevice.type;
+//					saveContact.messageCount = 0;
+//					saveContact.activeUser = NpcCommon.mThreeNum;
+//					Intent modify = new Intent();
+//					modify.setClass(context, AddContactNextActivity.class);
+//					modify.putExtra("isCreatePassword", true);
+//                  	modify.putExtra("contact", saveContact);
+//                  	String mark = localDevice.address.getHostAddress();
+//                  	modify.putExtra("ipFlag", mark.substring(mark.lastIndexOf(".")+1, mark.length()));
+//					context.startActivity(modify);
+//
+//				}
+//			});
+//			return view;
+//		}
+	}
+
+	Handler handler = new Handler(new Handler.Callback() {
+
+		@Override
+		public boolean handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			notifyDataSetChanged();
+			return true;
+		}
+	});
+
+	@Override
+	public void notifyDataSetChanged() {
+		// TODO Auto-generated method stub
+		super.notifyDataSetChanged();
+	}
+
+}

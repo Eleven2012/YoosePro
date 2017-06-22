@@ -1,0 +1,453 @@
+/* Localized versions of Info.plist keys */
+
+"account_login" = "帳戶登錄";
+"input_username" = "請輸入郵箱／ID";
+"input_password" = "請輸入密碼";
+"login" = "登錄";
+"unInputUsername" = "請輸入郵箱／ID";
+"unInputPassword" = "請輸入密碼";
+
+"login_failure" = "登錄失敗";
+"user_unexist" = "用戶不存在";
+"password_error" = "密碼錯誤";
+
+"ok" = "確定";
+"cancel" = "取消";
+
+"contact" = "設備列表";
+
+"logout" = "註銷";
+
+"logout_prompt" = "你確定註銷當前用戶麼?";
+"call" = "呼叫";
+"monitor" = "監控";
+"accept" = "接聽";
+"reject" = "掛斷";
+
+"input_device_password" = "請輸入設備密碼";
+
+"account_info" = "帳戶信息";
+"check_update" = "檢查更新";
+"update" = "更新";
+"screenshot" = "影像";
+"about_us" = "關於我們";
+
+"screenshot_success" = "截圖成功";
+
+"sure_to_delete" = "你確定要刪除嗎?";
+"sure_to_clear" = "你確定要清空嗎?";
+"operator_success" = "操作成功";
+"operator_failure" = "操作失敗";
+"no_permission" = "權限不足";
+
+"online" = "(在線)";
+"offline" = "(離線)";
+
+"add_contact" = "添加已聯網設備";
+"input_contact_id" = "請輸入設備ID";
+"input_contact_name" = "請輸入設備名稱";
+"input_contact_password" = "請輸入設備密碼";
+
+"next" = "下一步";
+"save" = "保存";
+
+"contact_already_exists" = "設備已存在";
+
+"chat" = "通話";
+"message" = "短信";
+"playback" = "回放";
+"control" = "設置";
+"device_control" = "設備設置";
+"modify" = "修改";
+
+"recent_one_day" = "最近一天";
+"recent_three_day" = "最近三天";
+"recent_one_month" = "最近一月";
+"custom" = "自定義";
+
+"device_password_error" = "設備密碼錯誤";
+"net_exception" = "網絡異常";
+
+"about" = "關於";
+"about_text" = "Zodikam是為新一代智能家居產品量身定制的免費APP，它採用先進的 P2P網絡傳輸技術，實現遠程監控從未如此簡單，讓您隨時隨地關愛家人、朋友。";
+
+"start_time" = "開始時間:";
+"end_time" = "結束時間:";
+"search" = "查詢";
+
+"unselected_start_time" = "請選擇開始時間";
+"unselected_end_time" = "請選擇結束時間";
+"start_time_must_before_end_time" = "開始時間必須在結束時間之前";
+
+"account" = "帳號";
+"email" = "郵箱";
+"phone_number" = "手機";
+"modify_login_password" = "修改登錄密碼";
+
+"unbind" = "未綁定";
+
+"modify_password" = "修改密碼";
+"input_original_password" = "請輸入當前密碼";
+"input_new_password" = "請輸入新的密碼";
+"confirm_input" = "確認輸入";
+"two_passwords_not_match" = "兩次輸入的密碼不一致";
+"password_too_long" = "密碼長度不能超過30個字符";
+"original_password_error" = "原始密碼錯誤";
+
+"unknown_error" = "未知錯誤";
+"sure_to_unbind_email" = "確定解除郵箱綁定？";
+"sure_to_unbind_phone" = "確定解除手機綁定?";
+
+"bind_email" = "郵箱綁定";
+"input_email" = "請輸入郵箱";
+
+"email_length_error" = "郵箱長度必須是5-31個字符";
+"email_used" = "郵箱已被使用";
+"email_format_error" = "郵箱格式錯誤";
+
+"input_login_password" = "請輸入登錄密碼";
+"session_error" = "會話錯誤，您的帳號可能在其它地方登錄，請重新登錄";
+
+
+"time_set" = "時間設置";
+"media_set" = "媒體設置";
+"security_set" = "安全設置";
+"network_set" = "網絡設置";
+"alarm_set" = "報警設置";
+"record_set" = "錄像設置";
+"defenceArea_set" = "防區設置";
+"remote_set" = "遠程設置";
+"device_update" = "檢查設備更新";
+
+"apply" = "應用";
+"video_format_pal" =  "PAL";
+"video_format_ntsc" = "NTSC";
+
+"video_format" = "視頻制式";
+"volume" = "音量";
+
+"modify_device_password" = "修改設備密碼";
+
+"motion" = "移動偵測";
+"buzzer" = "蜂鳴器";
+"buzzer_time" = "蜂鳴時長(分鐘)";
+
+"alarm_email" = "報警郵箱";
+"bind_account" = "綁定帳號";
+
+"sure_to_unbind_account" = "確定解除綁定此報警帳號?";
+"input_alarm_id" = "請輸入報警ID號";
+"id_too_long" = "ID號不能超過9個字符";
+"alarm_id_must_zero_begin" = "報警ID號必需是\'0\'開頭";
+"add_bind_account_prompt1" = "最多只能添加";
+"add_bind_account_prompt2" = "個報警帳號";
+
+"remote_defence" = "遠程布防";
+"remote_record" = "遠程錄像";
+
+"record_type" = "錄像模式";
+"record_time" = "錄像時長(分鐘)";
+
+"manual_record" = "手動錄像";
+"alarm_record" = "報警錄像";
+"timer_record" = "定時錄像";
+"plan_time_table" = "計劃時間表";
+
+"net_type" = "網絡類型";
+"wired" = "有線";
+"wifi" = "WIFI";
+"alarm_push" = "報警推送帳號";
+
+"change_net_prompt" = "修改網絡可能造成設備斷開連接，請確認操作！";
+
+"wifi_list" = "WIFI列表";
+
+"input_wifi_password" = "請輸入WIFI密碼";
+"wifi_password_format_error" = "WIFI密碼格式錯誤";
+
+"remote" = "遙控";
+"hall" = "大廳";
+"window" = "窗戶";
+"balcony" = "陽台";
+"bedroom" = "臥室";
+"kitchen" = "廚房";
+"courtyard" = "庭院";
+"door_lock" = "門鎖";
+"other" = "其它";
+
+"clear_defence_prompt" = "確定清除此通道?";
+"learn_defence_prompt" = "點擊確定，觸發將要學習的無線設備";
+
+"device_not_support_defence_area" = "當前設備不支援防區";
+
+"bind_phone" = "註冊嚮導";
+"input_phone" = "請輸入您的手機號碼";
+
+"china" = "中國";
+"america" = "美國";
+
+"phone_length_error" = "手機號碼長度必需在6-15個字符";
+
+"phone_used" = "手機號碼已被使用";
+"get_phone_code_too_times" = "獲取手機驗證碼太頻繁，請稍後再試";
+"phone_format_error" = "手機號碼格式錯誤";
+
+"phone_code_was_send_to" = "手機驗證碼已發送至";
+"phone_check_code" = "手機驗證碼";
+
+"choose_country" = "選擇國家";
+
+"email_id_login" = "郵箱/用戶ID";
+"phone_login" = "手機號碼";
+
+
+"register_success_prompt" = "恭喜您，註冊成功！";
+
+
+"create_init_password_prompt" = "當前設備未設置密碼，請創建一個密碼";
+
+"device_already_exist_password" = "添加失敗，設備已存在初始密碼";
+
+
+"call_in_prompt" = "來自";
+"call_out_prompt" = "正在呼叫";
+"monitor_out_prompt" = "正在連接...";
+
+"net_warning_prompt" = "當前網絡不可用，請檢查您的網絡設置";
+
+"now_version_is_latest" = "當前設備為最新版本";
+"other_was_check_device_update" = "設備繁忙";
+"device_not_support" = "設備不支持";
+
+"send" = "發送";
+
+"alarm_history" = "報警記錄";
+"alarm_device" = "設備 :";
+"alarm_type" = "類型 :";
+
+"input_message" = "請輸入消息";
+"message_too_long" = "消息太長";
+"can_not_send_message_to_myself" = "不能給自己發消息";
+"send_failure" = "發送失敗";
+
+"device" = "設備";
+"view" = "查看";
+"extern_alarm" = "外部報警";
+"motion_dect_alarm" = "移動偵測";
+"emergency_alarm" = "緊急報警";
+"ext_line_alarm" = "有線報警";
+"low_vol_alarm" = "低電壓報警";
+"pir_alarm" = "人體紅外報警";
+
+"forget_password" = "忘記密碼?";
+
+"device_password_too_long" = "設備密碼長度不能超過10個字符";
+"password_zero_format_error" = "設備密碼必須是非\'0\'開頭的數字組合";
+"password_number_format_error" = "設備密碼只能由0-9數字組成";
+
+
+"input_ssid" = "請輸入WIFI-SSID";
+
+"discovered" = "發現";
+"new_device" = "個新設備";
+"local_device_list" = "新設備列表";
+
+"device_id_zero_format_error" = "設備ID無效";
+
+"id_unknown_error" = "未知原因";
+"id_overdate" = "對方ID已過期";
+"id_disabled" = "對方ID被禁用";
+"id_inactived" = "對方ID未激活";
+"id_offline" = "設備離線";
+"id_busy" = "設備繁忙";
+"id_powerdown" = "對方關機";
+"id_connect_failed" = "連接失敗";
+"id_hangup" = "掛斷";
+"id_timeout" = "連接超時";
+"id_internal_error" = "內部錯誤";
+"id_no_accept" = "無人接聽";
+"id_password_error" = "設備密碼錯誤";
+"id_not_support" = "設備不支持";
+
+"cur_version_is" = "當前版本為";
+"can_update_to" = "可升級至";
+"can_update_sd" = "能夠從SD卡升級";
+"start_update" = "開始更新";
+"update_failed" = "更新失敗";
+"cancel_update" = "取消更新";
+
+"loading" = "加載中...";
+"cur_version" = "當前版本";
+"kernel_version" = "內核版本";
+"rootfs_version" = "系統版本";
+"uboot_version" = "uBoot版本";
+
+"device_info" = "設備信息";
+
+"release_new_version"="新版本已經發布";
+"ask_update_immediately"="您想立刻升級麼？";
+"remain_me"="下次提醒";
+"update_me"="立刻升級";
+"skip_me"="跳過此版本";
+"rate_me"="為我評分";
+"latest_version"="當前已是最新版本";
+"quit_update"="不需要升級";
+
+"no_init_password_device" = "未設置密碼設備";
+
+"defence_group" = "防區";
+"defence_item" = "通道";
+"already_learn" = "已被學習";
+"learning" = "學習中...";
+"clearing" = "清除中...";
+
+"qrcode_add" = "智能聯機";
+"add_new_device" = "添加新設備";
+"qrcode" = "二維碼配置WIFI";
+"help" = "幫助";
+
+"add_device" = "添加設備";
+
+"empty_contact_prompt" = "這裡還是空的哦！您需要添加設備才能查看視頻，趕快行動吧～";
+"manually_add" = "手動添加";
+
+
+"set_scanning_code_prompt" = "請將攝像頭對準二維碼，直到聽到叮的一聲";
+"heard" = "聽到了";
+"waiting_content_prompt" = "等待設備連接WiFi";
+"set_wifi_failed_title" = "連接失敗提示";
+"set_wifi_failed_prompt" = "1.手機與設備不在同一局域網內\n2.設備連接WiFi不成功";
+"set_wifi_success_title" = "嘿嘿！設置成功！";
+
+"qrcode_prompt" = "請將攝像頭對準二維碼，保持20-30cm，直到聽到叮的一聲，是否聽到？";
+
+"modify_visitor_password" = "設置訪客密碼";
+"auto_update" = "自動升級";
+
+"accept_alarm" = "接收報警消息";
+"human_infrared" = "人體紅外開關";
+"wired_alarm_input" = "有線報警輸入";
+"wired_alarm_output" = "有線報警輸出";
+"image_inversion" = "圖像倒轉";
+
+"input_new_visitor_password" = "請輸入訪客密碼";
+
+
+"anonymous" = "匿名";
+
+"remote_record_switch" = "錄像開關";
+
+"modify_manager_password" = "設置管理密碼";
+
+"SD" = "標清";
+"LD" = "流暢";
+"HD" = "高清";
+"number_viewer" = "當前觀看人數:";
+
+"time_zone_set" = "時區設置";
+
+/*
+ * new translations(2014.12.20)-已同步Chinese
+ */
+"new_account_register" = "註冊";
+"phone_register" = "手機註冊";
+"email_register" = "郵箱註冊";
+"register_account" = "註冊嚮導";
+
+"storage_info" = "存儲資訊";
+"sd_card_capacity" = "SD卡容量:";
+"sd_card_rem_capacity" = "SD卡剩餘容量:";
+"u_disk_capacity" = "U盤容量:";
+"u_disk_rem_capacity" = "U盤剩餘容量:";
+"sd_card_format" = "SD卡格式化";
+"no_storage" = "沒有發現存儲設備";
+"not_support_format" = "設備不支援格式化";
+"sd_format_success" = "SD卡格式化成功";
+"format_sd_card" = "格式化SD卡";
+"confirm_format" = "要清空SD卡嗎？如果這樣做，您會丟失其中存儲的全部資料！";
+
+"device_not_support_sensor_switch" = "當前設備不支援感應器開關";
+"learn_code" = "學習對碼";
+
+"no_record" = "暫無記錄";
+"no_more_record" = "沒有更多記錄了";
+
+"debug_alarm" = "調試報警";
+"defence_alarm" = "佈防報警";
+"defence_disable_alarm" = "撤防報警";
+"battery_low_vol" = "電池低電";
+"update_to_ser" = "參數上傳伺服器";
+
+//Chinese(Traditional)独有的
+"door_bell" = "門鈴";
+"power_off" = "斷電報警";
+
+/*
+ * new translations(2015.02.10)-已同步Chinese
+ */
+"send_request_fail" = "發送請求失敗";
+"get_data_fail" = "獲取資料失敗";
+"mall_id_unexist" = "商城ID不存在";
+"invalid_link" = "連結無效";
+"message_item" = "消息";
+"screen_shot_item" = "影像";
+"more_item" = "更多";
+"alarm_message" = "報警消息";
+"system_message" = "系統消息";
+"open" = "打開";//推送消息
+
+"somebody_visit" = "有人來訪";
+
+"scan_prompt01" = "攝像機需要連接的WIFI";
+"add_tab_title00" = "智能聯機";
+"add_tab_title01" = "二維條碼";
+"add_guard_text00" = "歡迎使用,您需要準備好";
+"add_guard_text01" = "智能攝像機";
+"add_guard_text02" = "連接電源";
+"add_guard_text03" = "網絡WIFI";
+"add_guard_text04" = "溫馨提示:\n您需要先將您的手機或者平板連接至WIFI網絡.";
+"add_guard_text05" = "不再提示";
+"add_guard_text06" = "連接好電源";
+"add_guard_text07" = "接通電源等待攝像頭髮出連接提示音;\n如果沒有聽到連接提示音，請將攝像頭複位";
+
+"qrcode_prompt01" = "請等待設備連接;\n直到聽到叮的一聲，是否聽到？";
+
+"waiting_content_prompt01" = "等待連接";
+"waiting_content_prompt02" = "正在連接中...\n請耐心等待,馬上就要連接成功了.";
+
+"connection_failure" = "連接失敗";
+"failure_reason" = "可能的原因:\n1.輸入錯誤的wifi密碼\n2.攝像頭不支援5G網路\n3.當前網路環境較差";
+"try_again" = "再試一次";
+
+"link_wifi" = "請先將手機或平板連接至WIFI";
+
+/*
+ * new translations(2015.04.30)-已同步Chinese
+ */
+"not_support_operation" = "設備不支援此操作";
+"too_frequent" = "操作過於頻繁";
+"not_open" = "該GPIO未開放";
+"door_bell" = "門鈴";
+"confirm_open" = "確認開門?";
+
+"no_alarm_push_id" = "无报警推送账号";
+"no_next_files" = "无下一个文件";
+"no_previous_files" = "无上一个文件";
+
+"add_by_qrcode" = "試試二維碼添加";
+
+//app更新
+"can_update_to" = "可更新至";
+"version" = "版本";
+"next_time" = "下次再說";
+"update_now" = "立即更新";
+
+"no_playback_file" = "沒有搜索到重播檔";
+
+"pwd_too_simple" = "密碼過於簡單";
+
+"strong" = "强";
+"general" = "中";
+"weak" = "弱";
+
+"logging" = "正在登錄";

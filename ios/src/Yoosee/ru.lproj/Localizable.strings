@@ -1,0 +1,449 @@
+/* Localized versions of Info.plist keys */
+
+"account_login" = "Вход в Учетную запись";
+"input_username" = "Введите ID/Email";
+"input_password" = "Введите пароль";
+"login" = "Вход";
+"unInputUsername" = "Введите ID/Email";
+"unInputPassword" = "Введите пароль";
+
+"login_failure" = "Сбой входа";
+"user_unexist" = "Пользователь не существует";
+"password_error" = "Ошибка пароля";
+
+"ok" = "ОК";
+"cancel" = "Отмена";
+
+"contact" = "Список устройств";
+"discover" = "Встряхните";
+"no_device" = "Устройства не найдены";
+"recent" = "Недавние";
+"toolbox" = "Инструменты";
+"setting" = "Настройки системы";
+
+"logout" = "Выход";
+"exit" = "Выйти";
+
+"exit_prompt" = "Вы уверены?";
+"logout_prompt" = "Выйти из учетной записи?";
+"call" = "Вызов";
+"monitor" = "Монитор";
+"accept" = "Принять";
+"reject" = "Завершить";
+
+"input_monitor_id" = "Введите ID монитора";
+"input_call_id" = "Введите ID для вызова";
+"input_device_password" = "Введите пароль устройства";
+
+"account_info" = "Информация об Учетной записи";
+"check_update" = "Обновить";
+"screenshot" = "Images";
+"about_us" = "О нас";
+
+"screenshot_success" = "Снимок получен";
+
+"sure_to_delete" = "Подтвердите удаление?";
+"sure_to_clear" = "Подтвердите очистку?";
+"operator_success" = "Настройка завершена";
+"operator_failure" = "Ошибка настройки";
+"modify_success" = " Операция завершена";
+"modify_failure" = " Ошибка операции";
+"no_permission" = "Доступ запрещен";
+
+"online" = "(В сети)";
+"offline" = "(Не в сети)";
+
+"add_contact" = "Добавить устройство";
+"input_contact_id" = "Введите ID устройства";
+"input_contact_name" = "Введите имя устройства";
+"input_contact_password" = "Введите пароль устройства";
+
+"next" = "Дальше";
+"save" = "Сохранить";
+
+"contact_already_exists" = "Устройство уже существует";
+
+"monitor" = "Монитор";
+"chat" = "Вызов";
+"message" = "Сообщение";
+"playback" = "Воспроизведение";
+"control" = "Настройки";
+"device_control" = "Настройки";
+"modify" = "Настроить";
+
+"recent_one_day" = "Один день";
+"recent_three_day" = "Три дня";
+"recent_one_month" = "Месяц";
+"custom" = "Индивидуально";
+
+"device_password_error" = "Ошибка пароля устройства";
+"net_exception" = "Ошибка сети";
+
+"about" = "О программе";
+"about_text" = " Это бесплатное приложение для Видеофона \"V-Phone\". Данное приложение позволяет совершать видеозвонки, просматривать видео с видеофона в реальном времени, а так же защищать Ваш дом! С V-Phone Ваша жизнь станет ярче и интересней.";
+
+"start_time" = "Время начала:";
+"end_time" = "Время окончания:";
+"search" = "Поиск";
+
+"unselected_start_time" = "Выберите время начала";
+"unselected_end_time" = "Выберите время окончания";
+"start_time_must_before_end_time" = "Время начала должно быть до времени окончания";
+
+"account_info" = "Учетная запись";
+"account" = " Учетная запись ";
+"email" = "Email";
+"phone_number" = "Телефон";
+"modify_login_password" = "Пароль учетной записи";
+
+"unbind" = "Отвязать";
+
+"modify_password" = "Настроить пароль";
+"input_original_password" = "Введите старый пароль";
+"input_new_password" = "Введите новый пароль";
+"confirm_input" = "Подтвердите ввод";
+"two_passwords_not_match" = "Пароли не совпадают";
+"password_too_long" = "Пароль слишком длинный";
+"original_password_error" = "Ошибка старого пароля";
+
+"unknown_error" = "Неизвестная ошибка";
+"sure_to_unbind_email" = "Отвязать Email?";
+"sure_to_unbind_phone" = "Отвязать телефон?";
+
+"bind_email" = "Привязать Email";
+"input_email" = "Введите email";
+"email_length_error" = "Email должен быть от 5 до 31 символа в длинну";
+"email_used" = "Email уже используется";
+"email_format_error" = "Ошибка формата Email";
+
+"input_login_password" = "Введите пароль учетной записи";
+
+"session_error" = "Ошибка! Возможно Ваша учетная запись используется, повторите вход.";
+
+//"control" = "Управление";
+
+"time_set" = "Дата и Время";
+"media_set" = "Настройки медиа";
+"security_set" = "Настройки безопасности";
+"network_set" = "Настройки сети";
+"alarm_set" = "Настройки тревоги";
+"record_set" = "Настройки записи";
+"defenceArea_set" = "Установка зон охраны";
+"remote_set" = "Удаленные настройки";
+"device_update" = "Обновление устройства";
+
+"apply" = "Применить";
+"video_format_pal" =  "PAL";
+"video_format_ntsc" = "NTSC";
+
+"video_format" = "Формат видео";
+"volume" = "Громкость";
+
+"modify_device_password" = "Установить пароль устройства";
+
+"motion" = "Детектор движения";
+"buzzer" = "Зуммер";
+"buzzer_time" = "Время зуммера(минуты)";
+
+"alarm_email" = "Тревожный Email";
+"bind_account" = "Привязать учетную запись";
+
+"sure_to_unbind_account" = "Отвязать тревожный ID?";
+"input_alarm_id" = "Введите тревожный ID";
+"id_too_long" = "ID не может быть длиннее 9 символов";
+"alarm_id_must_zero_begin" = "Тревожный ID должен начинаться с цифры 0";
+"add_bind_account_prompt1" = "Только добавить";
+"add_bind_account_prompt2" = "Тревожная учетная запись";
+
+"remote_defence" = "Удаленная охрана";
+"remote_record" = "Удаленная запись";
+
+"record_type" = "Тип записи";
+"record_time" = "Время записи (минуты)";
+
+"manual_record" = "Ручная запись";
+"alarm_record" = "Запись по тревоге";
+"timer_record" = "Запись по расписанию";
+"plan_time_table" = "Задать расписание";
+
+"net_type" = "Тип сети";
+"wired" = "Ethernet";
+"wifi" = "WIFI";
+"alarm_push" = "Тревожный ID";
+
+"change_net_prompt" = "Изменение типа сети приведет к потере соединения, подтвердите действие!";
+
+"wifi_list" = "Список WIFI ";
+
+"input_wifi_password" = "Введите пароль WiFi";
+"wifi_password_format_error" = "Ошибка формата пароля WiFi";
+
+"remote" = "Удаленно";
+"hall" = "Зал";
+"window" = "Окно";
+"balcony" = "Балкон";
+"bedroom" = "Спальня";
+"kitchen" = "Кухня";
+"courtyard" = "Двор";
+"door_lock" = "Дверной замок";
+"other" = "Другое";
+
+"clear_defence_prompt" = "Очистить?";
+"learn_defence_prompt" = "Нажмите ОК для программирования";
+
+"device_not_support_defence_area" = "Данное устройство не поддерживает охрану по зонам";
+
+"bind_phone" = "Привязать телефон";
+"input_phone" = "Введите Ваш номер телефона";
+
+"china" = "Китай";
+"america" = "США";
+
+"phone_length_error" = "Номер телефона должен быть не длиннее 15 символов";
+
+"phone_used" = "Телефон уже используется";
+"get_phone_code_too_times" = "Код отправлен максимальное количество раз, повторите позже ";
+"phone_format_error" = "Ошибка формата номера телефона";
+
+"phone_code_was_send_to" = "Проверочны код отправлен:";
+"phone_check_code" = "Проверочный код";
+
+"choose_country" = "Выберите страну";
+
+"email_id_login" = "Email/ID";
+"phone_login" = "Телефон";
+
+"register_type_phone" = "Регистрация через телефон>>";
+"register_type_email" = "Регистрация через email>>";
+
+"register_success_prompt" = "Регистрация завершена!";
+
+"searching_device_in_local" = "Выполняю поиск по LAN";
+
+"create_init_password_prompt" = "Пароль устройства не задан, установите пароль";
+
+"device_already_exist_password" = "Пароль на устройстве уже задан";
+
+"call_in_prompt" = "Вызов от";
+"call_out_prompt" = "Вызываю";
+"monitor_out_prompt" = "Соединение с...";
+
+"net_warning_prompt" = "Текущая сеть недоступна, проверьте настройки";
+
+"now_version_is_latest" = "Вы используете последнюю версию";
+"other_was_check_device_update" = "Устройство занято";
+
+"device_not_support" = "Устройство не поддерживается";
+
+"send" = "Отправить";
+
+"alarm_history" = "Записи тревог";
+"alarm_device" = "Устройство:";
+"alarm_type" = "Тип:";
+
+"input_message" = "Введите сообщение";
+"message_too_long" = "Сообщение слишком длинное";
+"can_not_send_message_to_myself" = "Нельзя отправлять сообщение самому себе";
+"send_failure" = "Сбой отправки";
+
+"device" = "Устройство";
+"view" = "Просмотр";
+"extern_alarm" = "Внешняя тревога";
+"motion_dect_alarm" = "Сработал детектор движения";
+"emergency_alarm" = "Экстренная тревога";
+"ext_line_alarm" = "Тревога I/O";
+"low_vol_alarm" = "Низкое напряжение";
+"pir_alarm" = "Тревога PIR";
+
+"forget_password" = "Забыли пароль?";
+
+"device_password_too_long" = "Пароль устройства должен быть не длиннее 10 символов";
+"password_zero_format_error" = "Пароль устройства должен состоять из цифр и не может начинаться с цифры 0";
+"password_number_format_error" = "Пароль устройства может содержать только цифры 0-9";
+
+"set_wifi" = "Установить WiFi";
+
+"no_connect_wifi" = "Телефон не подключен к WiFi";
+"set" = "Установить";
+
+"infrared_remote" = "ИК управление";
+
+"input_ssid" = "Введите WIFI-SSID";
+
+"discovered" = "Исследовать";
+"new_device" = "Новое устройство";
+"local_device_list" = "Список новых устройств";
+
+"device_id_zero_format_error" = "ID устройства должен состоять из цифр и не может начинаться с цифры 0";
+
+"id_unknown_error" = "Неизвестная ошибка";
+"id_overdate" = "ID просрочен";
+"id_disabled" = " ID отключен";
+"id_inactived" = "ID не активирован";
+"id_offline" = "Не в сети";
+"id_busy" = "Занят";
+"id_powerdown" = "Целевой ID не в сети";
+"id_connect_failed" = "Сбой соединения";
+"id_hangup" = "Отбой";
+"id_timeout" = "Время истекло";
+"id_internal_error" = "Внутренняя ошибка	";
+"id_no_accept" = "Нет ответа";
+"id_password_error" = "Ошибка пароля устройства";
+"id_not_support" = "Не поддерживается";
+
+"cur_version_is" = "Текущая версия";
+"can_update_to" = "Можно обновить до";
+"start_update" = "Начать обновление";
+"update_failed" = "Обновление прервано";
+"cancel_update" = "Отменить";
+
+"loading" = "Загрузка...";
+"cur_version" = "ТекВерсия";
+"kernel_version" = "Версия ядра";
+"rootfs_version" = "Версия системы";
+"uboot_version" = "Версия uBoot";
+
+"device_info" = "Информация о устройстве";
+
+"release_new_version"="Доступна новая версия";
+"ask_update_immediately"="Обновить немедленно?";
+"remain_me"="Напомнить позже";
+"update_me"="Обновить сейчас";
+"rate_me"="Оценить";
+"skip_me"="Пропустить";
+"latest_version"="Это последняя версия";
+"quit_update"="Обновление не требуется";
+
+"no_init_password_device" = "Пароль не задан";
+
+"defence_group" = "Группа";
+"defence_item" = "Пункт";
+"already_learn" = "Задано";
+"learning" = "Обучение...";
+"clearing" = "Очистка...";
+
+"qrcode_add" = "Smart Scan";
+"add_new_device" = "Add New Device";
+"qrcode" = "Установить WiFi через QR код";
+"make" = "Сгенерировать";
+"help" = "Помощь";
+
+"add_device" = "Добавить устройство";
+
+"empty_contact_prompt" = "Пусто. Добавьте устройство!";
+"smart_key" = "Установить WiFi через Smart ключ";
+"smart_key_add" = "Smart ключ";
+"search_local_area" = "Сканирование LAN ";
+"manually_add" = "Вручную";
+
+"input_smart_key_prompt" = " Вставьте Smart ключ и установите громкость на максимум.";
+
+"input_wifi_password_sk" = "Введите пароль WiFi ";
+"input_device_password_sk" = "Введите пароль устройства";
+"set_wifi_content_prompt" = "Продолжайте направлять Smart ключ на камеру пока не услышите звук «Дин». ";
+"set_wifi_content_prompt1" = " Установите Smart ключ перед камерой:";
+"set_wifi_content_prompt2" = " После того, как услышите звук \"Дин\" от камеры, нажмите \"Слышал\" .";
+"set_wifi_content_prompt3" = " Если вы услышите три тоновых сигнала, нажмите \"Вернуться\" и повторите ввод пароля .";
+"set_scanning_code_prompt" = "Направьте камеру на Smart Scan код и дождитесь звука «Дин». ";
+"heard" = "Слышал";
+"back" = "Вернуться";
+"waiting_content_prompt" = "Ожидание соединения WiFi";
+"set_wifi_failed_title" = "Сбой соединения";
+"set_wifi_failed_prompt" = "1.Ваш телефон находится в другой LAN сети 2.Камере не удается подключиться к WiFi 3.Устройство не поддерживает 5G WiFi";
+"set_wifi_success_title" = "Настройка завершена!";
+
+"qrcode_prompt" = " Установите мобильный телефон в 20-30 см от камеры, экраном к камере, чтобы она распознала Smart Scan код, дождитесь звука «Дин».";
+
+"modify_visitor_password" = "Гостевой пароль";
+"auto_update" = "Автообновление";
+
+"accept_alarm" = "Получить тревожное сообщение";
+"human_infrared" = "ИК переключатель";
+"wired_alarm_input" = " Вход I/O тревоги";
+"wired_alarm_output" = "Выход I/O тревоги";
+"image_inversion" = "Перевернутое изображение";
+
+"input_new_visitor_password" = "Введите гостевой пароль";
+
+"anonymous_login" = "Анонимный вход";
+
+"anonymous" = "Аноним";
+
+"remote_record_switch" = "Переключение записи";
+
+"modify_manager_password" = "Пароль администратора";
+
+"SD" = "SD";
+"LD" = "LD";
+"HD" = "HD";
+"number_viewer" = "Количество просматривающих:";
+
+"time_zone_set" = "Установка часового пояса";
+
+/*
+ * new translations(2014.12.20)-未同步Chinese
+ */
+"new_account_register" = "Register";
+"phone_register" = "Register by phone";
+"email_register" = "Register by email";
+"register_account" = "Регистрация учетной записи";
+
+"storage_info" = "Состояние памяти";
+"sd_card_capacity" = "Память SD:";
+"sd_card_rem_capacity" = "Осталось памяти SD:";
+"u_disk_capacity" = "Память U Disk:";
+"u_disk_rem_capacity" = "Осталось памяти U Disk:";
+"sd_card_format" = "Форматировать SD ";
+"no_storage" = "Карт памяти не обнаружено.";
+"not_support_format" = "The device dose not support format.";
+"sd_format_success" = "Erase sd card Successfully";
+"format_sd_card" = "Format SD Card";
+"confirm_format" = "Are you sure to clear?If you do this,you will lose all the data!";
+
+"device_not_support_sensor_switch" = "The current device does not support sensor switch";
+"learn_code" = "Learn code";
+
+"no_record" = "No Record";
+//"unknown_error" = "Unknown Error";
+"no_more_record" = "No more records.";
+
+"debug_alarm" = "Debug Alarm";
+"defence_alarm" = "Defence Alarm";
+"defence_disable_alarm" = "Defence Disable Alarm";
+"battery_low_vol" = "Battery Low Voltage Alarm";
+"update_to_ser" = "Parameters Upload Server";
+
+/*
+ * new translations(2015.02.10)-未同步Chinese
+ */
+"send_request_fail" = "Send request failed";
+"get_data_fail" = "Failed to get data";
+"mall_id_unexist" = "Store ID does not exist";
+"invalid_link" = "The link does not work";
+"message_item" = "Message";
+"screen_shot_item" = "Images";
+"more_item" = "More";
+"alarm_message" = "Alarm message";
+"system_message" = "System message";
+"open" = "open";//推送消息
+
+"scan_prompt01" = "Camera you want to connect to WIFI";
+"add_tab_title00" = "Smart link";
+"add_tab_title01" = "QR code";
+"add_guard_text00" = "Welcome, you need to be ready";
+"add_guard_text01" = "Smart cameras";
+"add_guard_text02" = "Connect the power";
+"add_guard_text03" = "WIFI";
+"add_guard_text04" = "Tips:\nYou need to first connect your phone or tablet to WIFI.";
+"add_guard_text05" = "Do not prompt";
+"add_guard_text06" = "Connect the power";
+"add_guard_text07" = "Power on, wait for the sound drops the camera;\nif you do not hear the drip-drip-drip sound, set camera reset";
+
+"qrcode_prompt01" = "Wait until you hear a “Ding” sound from camera，then click “Heard“";
+
+"waiting_content_prompt01" = "Waiting for connecting";
+"waiting_content_prompt02" = "Connecting...\nPlease be patient, soon the connection is successful.";
+
+"connection_failure" = "Connection Failure";
+"failure_reason" = "The possible reason:\n1.Input the wrong password for WiFi\n2.The camera does not support the 5G network";
+"try_again" = "Try Again";

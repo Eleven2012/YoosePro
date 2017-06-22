@@ -1,0 +1,448 @@
+/* Localized versions of Info.plist keys */
+
+"account_login" = "계정 로그인";
+"input_username" = "이메일/ ID를 입력 해주세요.";
+"input_password" = "비밀번호를 입력 해주세요.";
+"login" = "로그인";
+"unInputUsername" = "이메일/ ID를 입력 해주세요.";
+"unInputPassword" = "비밀번호를 입력 해주세요.";
+
+"login_failure" = "로그인 실패!";
+"user_unexist" = "사용자가 존재하지 않습니다.";
+"password_error" = "암호 오류!";
+
+"ok" = "확인";
+"cancel" = "취소";
+
+"contact" = "장치 목록";
+"discover" = "호출하기";
+"no_device" = "장치를 검색 할 수 없습니다.";
+"recent" = "최근통화기록";
+"toolbox" = "도구";
+"setting" = "시스템 설정";
+
+"logout" = "로그아웃";
+"exit" = "종료";
+
+"exit_prompt" = "종료 하시겠습니까?";
+"logout_prompt" = "로그 아웃 하시겠습니까?";
+"call" = "통화";
+"monitor" = "모니터";
+"accept" = "동의";
+"reject" = "연결 끊기";
+
+"input_monitor_id" = "eRobot ID를 입력 해주세요.";
+"input_call_id" = "호출 ID를 입력 해주세요.";
+"input_device_password" = "eRobot 암호 입력";
+
+"account_info" = "계정 정보";
+"check_update" = "업데이트";
+"screenshot" = "Images";
+"about_us" = "제품 소개";
+
+"screenshot_success" = "화면 캡쳐 성공!";
+
+"sure_to_delete" = "삭제 하시겠습니까?";
+"sure_to_clear" = "삭제 하시겠습니까?";
+"operator_success" = "수정 완료하였습니다.";
+"operator_failure" = "수정 실패!";
+"modify_success" = "수정 성공!";
+"modify_failure" = "동작 실패!";
+"no_permission" = "연결 거부!";
+
+"online" = "(온라인)";
+"offline" = "(오프라인)";
+
+"add_contact" = "장치 추가";
+"input_contact_id" = "eRobot ID를 입력하세요.";
+"input_contact_name" = "eRobot 이름을 입력하세요.";
+"input_contact_password" = "eRobot 암호를 입력하세요.";
+
+"next" = "다음";
+"save" = "저장";
+
+"contact_already_exists" = "동일한 eRobot이 이미 존재합니다.";
+
+"monitor" = "모니터";
+"chat" = "전화";
+"message" = "메시지";
+"playback" = "재생";
+"control" = "설정";
+"device_control" = "설정";
+"modify" = "편집";
+
+"recent_one_day" = "1일";
+"recent_three_day" = "3일";
+"recent_one_month" = "한달";
+"custom" = "고객";
+
+"device_password_error" = "비밀번호 오류!";
+"net_exception" = "네트워크 오류!";
+
+"about" = "2CU eRobot 소개";
+"about_text" = "2CU eRobot은 스마트 홈 제품으로, 새로운 디자인과 고품질 P2P네트워크 전송기술을 제공하고 있습니다. 모든 기능을 누구나 쉽게 사용하고 동작 할 수있도록 설계 구현한 최첨단 제품입니다. 본 SW는 하이드로날릭스㈜에서 제공합니다.감사합니다.";
+
+"start_time" = "시작 시간:";
+"end_time" = "종료 시간:";
+"search" = "검색";
+
+"unselected_start_time" = "시작 시간을 선택하세요.";
+"unselected_end_time" = "종료 시간을 선택하세요.";
+"start_time_must_before_end_time" = "시작시간은 종료시간보다 이전에 설정되어야 합니다.";
+
+"account_info" = "계정";
+"account" = "계정";
+"email" = "이메일";
+"phone_number" = "휴대폰";
+"modify_login_password" = "로그인 비밀번호";
+
+"unbind" = "연결해제";
+
+"modify_password" = "비밀번호 수정";
+"input_original_password" = "기존 비밀번호를 입력하세요.";
+"input_new_password" = "새 비밀번호를 입력 해주세요.";
+"confirm_input" = "입력확인";
+"two_passwords_not_match" = "비밀번호가 일치하지 않습니다.";
+"password_too_long" = "비밀번호는 30자를 초과 할 수 없습니다.";
+"original_password_error" = "비밀번호 오류!";
+
+"unknown_error" = "알 수 없는 오류!";
+"sure_to_unbind_email" = "이메일을 삭제 하시겠습니까?";
+"sure_to_unbind_phone" = "전화 연결을 해제 하시겠습니까?";
+
+"bind_email" = "이메일";
+"input_email" = "이메일을 입력 해주세요.";
+
+"email_length_error" = "이메일 길이는 5~31자 이내여야합니다.";
+"email_used" = "이메일이 사용중입니다.";
+"email_format_error" = "이메일 오류!";
+
+"input_login_password" = "비밀번호를 입력하세요.";
+"session_error" = "Error! 다른곳에서 로그인 중입니다. 다시 로그인하시기 바랍니다.";
+
+//"control" = "제어";
+
+"time_set" = "날짜 및 시간";
+"media_set" = "미디어 설정";
+"security_set" = "보안 설정";
+"network_set" = "네트워크 설정";
+"alarm_set" = "알람 설정";
+"record_set" = "녹음 설정";
+"defenceArea_set" = "보안영역 설정";
+"remote_set" = "원격 설정";
+"device_update" = "장치 업데이트";
+
+"apply" = "적용";
+"video_format_pal" = "PAL";
+"video_format_ntsc" = "NTSC";
+
+"video_format" = "비디오 포맷";
+"volume" = "볼륨";
+
+"modify_device_password" = "비밀번호 수정";
+"motion" = "모션 감지";
+"buzzer" = "알람";
+"buzzer_time" = "알람시간(분)";
+
+"alarm_email" = "알람 이메일";
+"bind_account" = "연결 계정";
+"sure_to_unbind_account" = "알람 ID를 해제 하시겠습니까?";
+"input_alarm_id" = "알람 ID를 입력해주세요.";
+
+"id_too_long" = "ID는 9자 이상 이여야합니다. ";
+
+"alarm_id_must_zero_begin" = "알람 ID는 반드시 0으로 시작해야 합니다.";
+"add_bind_account_prompt1" = "추가만 가능.";
+"add_bind_account_prompt2" = "알람 계정";
+
+"remote_defence" = "원격 보안";
+"remote_record" = "원격 녹화";
+
+"record_type" = "녹화 유형";
+"record_time" = "녹화 시간(분)";
+
+"manual_record" = "수동 녹화";
+"alarm_record" = "알람 녹화";
+"timer_record" = "예약 녹화";
+"plan_time_table" = "일정";
+
+"net_type" = "네트워크 종류";
+"wired" = " Ethernet ";
+"wifi" = "WIFI";
+"alarm_push" = "ID";
+
+"change_net_prompt" = "eRobot 네느워크 연결이 끊겼습니다. 다시 연결 해 주십시요.";
+
+"wifi_list" = "WIFI 목록";
+
+"input_wifi_password" = "비밀번호를 입력하세요.";
+"wifi_password_format_error" = "WIFI 비밀번호 오류!";
+
+"remote" = "거실";
+"hall" = "홀";
+"window" = "창";
+"balcony" = "발코니";
+"bedroom" = "침실";
+"kitchen" = "부엌";
+"courtyard" = "정원";
+"door_lock" = "현관문";
+"other" = "기타";
+
+"clear_defence_prompt" = "정말로 삭제하시겠습니까?";
+"learn_defence_prompt" = "무선센서를 동작을 위해 확인을 클릭 해주세요.";
+
+"device_not_support_defence_area" = "현재 장치는 보안기능을 지원하지 않습니다.";
+
+"bind_phone" = "전화 연결";
+"input_phone" = "당신의 전화번호를 입력해주세요.";
+
+"china" = "중국";
+"america" = "미국";
+
+"phone_length_error" = "전화번호의 길이는 6-15자 여야합니다.";
+
+"phone_used" = "통화중입니다.";
+"get_phone_code_too_times" = "나중에 다시 시도하십시오.";
+"phone_format_error" = "전화번호 오류!";
+
+"phone_code_was_send_to" = "인증 코드가 전송되었습니다.";
+"phone_check_code" = "인증 코드";
+
+"choose_country" = "국가 선택";
+
+"email_id_login" = "이메일/ ID";
+"phone_login" = "휴대폰";
+
+"register_type_phone" = "휴대폰 등록>>";
+"register_type_email" = "이메일로 등록>>";
+
+"register_success_prompt" = "성공적으로 등록되었습니다!";
+
+"searching_device_in_local" = "영역내에서 eRobot 검색";
+
+"create_init_password_prompt" = "비밀번호가 비어있습니다. 새 비밀번호를 입력하세요.";
+
+"device_already_exist_password" = "오류! 동일한 암호가 존재합니다.";
+
+"call_in_prompt" = "에서 전화";
+"call_out_prompt" = "에 전화";
+"monitor_out_prompt" = "에 연결...";
+
+"net_warning_prompt" = "현재 네트워크는 사용불가 합니다. 네트워크 설정을 다시 확인하세요.";
+
+"now_version_is_latest" = "최신 버전입니다.";
+"other_was_check_device_update" = "통화 중입니다.";
+"device_not_support" = "지원하지 않은 장치입니다.";
+
+"send" = "전송";
+
+"alarm_history" = "알람 로그";
+"alarm_device" = "장치:";
+"alarm_type" = "유형:";
+
+"input_message" = "메시지를 입력해주세요.";
+"message_too_long" = "메시지가 너무 깁니다.";
+"can_not_send_message_to_myself" = "자신에게는 메시지를 보낼 수 없습니다.";
+"send_failure" = "보내기 실패";
+
+"device" = "장치";
+"view" = "화면";
+"extern_alarm" = "외부 알람";
+"motion_dect_alarm" = "모션 감지 알람";
+"emergency_alarm" = "비상 알람";
+"ext_line_alarm" = " I/O 알람";
+"low_vol_alarm" = "전원경보 알람";
+"pir_alarm" = " PIR 감지 알람";
+
+"forget_password" = "비밀번호를 잊어버리셨나요?";
+
+"device_password_too_long" = "비밀번호는 10자 이내입니다.";
+"password_zero_format_error" = "암호는 숫자 조합이어야 하며 시작 부분에 ‘0’으로 시작 할 수 없습니다.";
+"password_number_format_error" = "암호는 0-9까지 숫자이어야 합니다.";
+
+"set_wifi" = "WIFI 설정";
+
+"no_connect_wifi" = "첫 번째 WIFI에 연결하십시오.";
+"set" = "설정";
+
+"infrared_remote" = "적외선";
+
+"input_ssid" = " WIFI-SSID 입력해주세요.";
+
+"discovered" = "검색";
+"new_device" = "새 장치";
+"local_device_list" = "새 장치 목록";
+
+"device_id_zero_format_error" = "eRobot ID는 숫자 조합이어야 하고 ‘0’으로 시작이 불가능 합니다.";
+
+"id_unknown_error" = "알 수 없는 오류!";
+"id_overdate" = "ID가 만료되었습니다.";
+"id_disabled" = "ID를 사용할 수 없습니다.";
+"id_inactived" = "ID가 활성화되지 않습니다.";
+"id_offline" = "오프라인";
+"id_busy" = "통화 중";
+"id_powerdown" = "대상 ID 오프라인";
+"id_connect_failed" = "연결 실패";
+"id_hangup" = "연결 끊기";
+"id_timeout" = "시간 제한";
+"id_internal_error" = "내부 오류";
+"id_no_accept" = "아무도 대답하지 않습니다.";
+"id_password_error" = "비밀번호 오류";
+"id_not_support" = "지원하지 않습니다.";
+
+"cur_version_is" = "현재 버전";
+"can_update_to" = "로 업데이트 할 수 있습니다.";
+"start_update" = "업데이트 시작";
+"update_failed" = "업데이트 실패";
+"cancel_update" = "취소";
+
+"loading" = "로딩 중…";
+"cur_version" = "CurVersion ";
+"kernel_version" = "KernelVersion ";
+"rootfs_version" = "RootfsVersion ";
+"uboot_version" = "uBootVersion ";
+
+"device_info" = "eRobot 정보";
+
+"release_new_version"="새로운 버전이 출시되었습니다.";
+"ask_update_immediately"="업데이트 하시겠습니까?";
+"remain_me"="나중에 업데이트";
+"update_me"="지금 업데이트";
+"rate_me"="업데이트 진행";
+"skip_me"="현재 버전은 업데이트 하지 않습니다.";
+"latest_version"="최신 버전입니다.";
+"quit_update"="최신 버전입니다.";
+
+"no_init_password_device" = "eRobot에 비밀번호가 설정되지 않았습니다.";
+
+"defence_group" = "그룹";
+"defence_item" = "항목";
+"already_learn" = "이이 존재합니다.";
+"learning" = "학습…";
+"clearing" = "삭제…";
+
+"qrcode_add" = "스마트 스캔";
+"add_new_device" = "Add New Device";
+"qrcode" = "QR 코드로 WIFI 설정";
+"make" = "Make";
+"help" = "도움말";
+
+"add_device" = "장치 추가";
+
+"empty_contact_prompt" = "장치를 추가해 주세요.";
+"smart_key" = "스마트 키로 WIFI 설정";
+"smart_key_add" = "스마트 키";
+"search_local_area" = "LAN 스캔";
+"manually_add" = "사용 설명서";
+
+"input_smart_key_prompt" = "스마트 키를 삽입하고, 높은 레벨로 미디어 사운드를 조절 해주세요.";
+
+"input_wifi_password_sk" = "WIFI 비밀번호를 입력하세요.";
+"input_device_password_sk" = "eRobot의 비밀번호를 입력하세요.";
+"set_wifi_content_prompt" = "삐~ 소리가 울릴 때까지 eRobot 화면에 스마트 키를 입력하세요.";
+"set_wifi_content_prompt1" = "스마트 키를 eRobot 화면에 입력하세요.:";
+"set_wifi_content_prompt2" = "eRobot에서 \"땡~\"소리가 들리면 Heared 탭을 누르십시오.";
+"set_wifi_content_prompt3" = "\"삐~삐~삐~\"와 같은 소리가 eRobot에서 들리면 암호를 다시 입력하세요.";
+"set_scanning_code_prompt" = "스마트 스캔 에 eRobot을 입력하고 ‘땡’ 소리 날때까지 기다려 주세요.";
+"heard" = "Heard";
+"back" = "뒤로";
+"waiting_content_prompt" = "WIFI 연결 대기 중";
+"set_wifi_failed_title" = "연결에 실패";
+"set_wifi_failed_prompt" = "연결할 수 없습니다.";
+"set_wifi_success_title" = "설정 성공!";
+
+"qrcode_prompt" = "스마트 스캔 코드를 직면하여 카메라의 20~30cm 떨어진 곳에 전화기를 배치하시고 땡 소리가 날 때까지 기다리십시요";
+
+"modify_visitor_password" = "Guest 비밀번호";
+"auto_update" = "자동 업데이트";
+
+"accept_alarm" = "알림 메시지를 수신";
+"human_infrared" = "적외선 스위치";
+"wired_alarm_input" = "I/O입력 알람";
+"wired_alarm_output" = "I/O출력 알람";
+"image_inversion" = "이미지 반전";
+
+"input_new_visitor_password" = "Guest 비밀번호를 입력하세요";
+
+"anonymous_login" = "익명 로그인";
+
+"anonymous" = "익명";
+
+"remote_record_switch" = "녹화 기록";
+
+"modify_manager_password" = "관리자 비밀번호";
+
+"SD" = "SD";
+"LD" = "LD";
+"HD" = "HD";
+"number_viewer" = "화면 개수:";
+
+"time_zone_set" = "시간대 설정";
+
+/*
+ * new translations(2014.12.20)-已同步Chinese
+ */
+"new_account_register" = "새로운 계정 등록";
+"phone_register" = "전화 등록";
+"email_register" = "이메일 등록";
+"register_account" = "계정 등록";
+
+"storage_info" = "녹화저장 정보";
+"sd_card_capacity" = "SD 용량:";
+"sd_card_rem_capacity" = "SD 사용가능 용량:";
+"u_disk_capacity" = "U 디스크 용량:";
+"u_disk_rem_capacity" = "U 디스크 사용가능 용량:";
+"sd_card_format" = "SD 카드 지우기";
+"no_storage" = "SD카드를 찾을 수 없습니다.";
+"not_support_format" = "지원하지 않는 포맷입니다.";
+"sd_format_success" = "SD카드 포맷 성공";
+"format_sd_card" = "SD카드 포맷";
+"confirm_format" = "정말로 포맷 하시겠습니까?";
+
+"device_not_support_sensor_switch" = "이 센서는 지원하지 않습니다.";
+"learn_code" = "코드 학습";
+
+"no_record" = "녹화 기록이 없습니다.";
+//"unknown_error" = "알수없는 에러";
+"no_more_record" = "더 이상 녹화 기록이 없습니다.";
+
+"debug_alarm" = "알람 수정";
+"defence_alarm" = "보안 알람 ";
+"defence_disable_alarm" = "보안 알람 비활성화";
+"battery_low_vol" = "배터리 경고 ";
+"update_to_ser" = "업데이트";
+
+/*
+ * new translations(2015.02.10)-未同步Chinese
+ */
+"send_request_fail" = "Send request failed";
+"get_data_fail" = "Failed to get data";
+"mall_id_unexist" = "Store ID does not exist";
+"invalid_link" = "The link does not work";
+"message_item" = "Message";
+"screen_shot_item" = "Images";
+"more_item" = "More";
+"alarm_message" = "Alarm message";
+"system_message" = "System message";
+"open" = "open";//推送消息
+
+"scan_prompt01" = "Camera you want to connect to WIFI";
+"add_tab_title00" = "Smart link";
+"add_tab_title01" = "QR code";
+"add_guard_text00" = "Welcome, you need to be ready";
+"add_guard_text01" = "Smart cameras";
+"add_guard_text02" = "Connect the power";
+"add_guard_text03" = "WIFI";
+"add_guard_text04" = "Tips:\nYou need to first connect your phone or tablet to WIFI.";
+"add_guard_text05" = "Do not prompt";
+"add_guard_text06" = "Connect the power";
+"add_guard_text07" = "Power on, wait for the sound drops the camera;\nif you do not hear the drip-drip-drip sound, set camera reset";
+
+"qrcode_prompt01" = "Wait until you hear a “Ding” sound from camera，then click “Heard“";
+
+"waiting_content_prompt01" = "Waiting for connecting";
+"waiting_content_prompt02" = "Connecting...\nPlease be patient, soon the connection is successful.";
+
+"connection_failure" = "Connection Failure";
+"failure_reason" = "The possible reason:\n1.Input the wrong password for WiFi\n2.The camera does not support the 5G network";
+"try_again" = "Try Again";

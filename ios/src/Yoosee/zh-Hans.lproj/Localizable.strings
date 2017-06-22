@@ -1,0 +1,448 @@
+/* Localized versions of Info.plist keys */
+
+"account_login" = "帐户登录";
+"input_username" = "请输入邮箱／ID";
+"input_password" = "请输入密码";
+"login" = "登录";
+"unInputUsername" = "请输入邮箱／ID";
+"unInputPassword" = "请输入密码";
+
+"login_failure" = "登录失败";
+"user_unexist" = "用户不存在";
+"password_error" = "密码错误";
+
+"ok" = "确定";
+"cancel" = "取消";
+
+"contact" = "设备列表";
+
+"logout" = "注销";
+
+"logout_prompt" = "你确定注销当前用户么?";
+"call" = "呼叫";
+"monitor" = "监控";
+"accept" = "接听";
+"reject" = "挂断";
+
+"input_device_password" = "请输入设备密码";
+
+"account_info" = "帐户信息";
+"check_update" = "检查更新";
+"update" = "更新";
+"screenshot" = "影像";
+"about_us" = "关于我们";
+
+"screenshot_success" = "截图成功";
+
+"sure_to_delete" = "你确定要删除吗?";
+"sure_to_clear" = "你确定要清空吗?";
+"operator_success" = "操作成功";
+"operator_failure" = "操作失败";
+"no_permission" = "权限不足";
+
+"online" = "(在线)";
+"offline" = "(离线)";
+
+"add_contact" = "添加已联网设备";
+"input_contact_id" = "请输入设备ID";
+"input_contact_name" = "请输入设备名称";
+"input_contact_password" = "请输入设备密码";
+
+"next" = "下一步";
+"save" = "保存";
+
+"contact_already_exists" = "设备已存在";
+
+"chat" = "通话";
+"message" = "短信";
+"playback" = "回放";
+"control" = "设置";
+"device_control" = "设备设置";
+"modify" = "修改";
+
+"recent_one_day" = "最近一天";
+"recent_three_day" = "最近三天";
+"recent_one_month" = "最近一月";
+"custom" = "自定义";
+
+"device_password_error" = "设备密码错误";
+"net_exception" = "网络异常";
+
+"about" = "关于";
+"about_text" = "Zodikam是为新一代智能家居产品——量身定制的免费APP，它采用先进的P2P网络传输技术，实现远程监控从未如此简单，让您随时随地关爱家人、朋友。";
+
+"start_time" = "开始时间:";
+"end_time" = "结束时间:";
+"search" = "查询";
+
+"unselected_start_time" = "请选择开始时间";
+"unselected_end_time" = "请选择结束时间";
+"start_time_must_before_end_time" = "开始时间必须在结束时间之前";
+
+"account" = "帐号";
+"email" = "邮箱";
+"phone_number" = "手机";
+"modify_login_password" = "修改登录密码";
+
+"unbind" = "未绑定";
+
+"modify_password" = "修改密码";
+"input_original_password" = "请输入当前密码";
+"input_new_password" = "请输入新的密码";
+"confirm_input" = "确认输入";
+"two_passwords_not_match" = "两次输入的密码不一致";
+"password_too_long" = "密码长度不能超过30个字符";
+"original_password_error" = "原始密码错误";
+
+"unknown_error" = "未知错误";
+"sure_to_unbind_email" = "确定解除邮箱绑定？";
+"sure_to_unbind_phone" = "确定解除手机绑定?";
+
+"bind_email" = "邮箱绑定";
+"input_email" = "请输入邮箱";
+
+"email_length_error" = "邮箱长度必须是5-31个字符";
+"email_used" = "邮箱已被使用";
+"email_format_error" = "邮箱格式错误";
+
+"input_login_password" = "请输入登录密码";
+"session_error" = "会话错误，您的帐号可能在其它地方登录，请重新登录";
+
+
+"time_set" = "时间设置";
+"media_set" = "媒体设置";
+"security_set" = "安全设置";
+"network_set" = "网络设置";
+"alarm_set" = "报警设置";
+"record_set" = "录像设置";
+"defenceArea_set" = "防区设置";
+"remote_set" = "远程设置";
+"device_update" = "检查设备更新";
+
+"apply" = "应用";
+"video_format_pal" =  "PAL";
+"video_format_ntsc" = "NTSC";
+
+"video_format" = "视频制式";
+"volume" = "音量";
+
+"modify_device_password" = "修改设备密码";
+
+"motion" = "移动侦测";
+"buzzer" = "蜂鸣器";
+"buzzer_time" = "蜂鸣时长(分钟)";
+
+"alarm_email" = "报警邮箱";
+"bind_account" = "绑定帐号";
+
+"sure_to_unbind_account" = "确定解除绑定此报警帐号?";
+"input_alarm_id" = "请输入报警ID号";
+"id_too_long" = "ID号不能超过9个字符";
+"alarm_id_must_zero_begin" = "报警ID号必需是\'0\'开头";
+"add_bind_account_prompt1" = "最多只能添加";
+"add_bind_account_prompt2" = "个报警帐号";
+
+"remote_defence" = "远程布防";
+"remote_record" = "远程录像";
+
+"record_type" = "录像模式";
+"record_time" = "录像时长(分钟)";
+
+"manual_record" = "手动录像";
+"alarm_record" = "报警录像";
+"timer_record" = "定时录像";
+"plan_time_table" = "计划时间表";
+
+"net_type" = "网络类型";
+"wired" = "有线";
+"wifi" = "WIFI";
+"alarm_push" = "报警推送帐号";
+
+"change_net_prompt" = "修改网络可能造成设备断开连接，请确认操作！";
+
+"wifi_list" = "WIFI列表";
+
+"input_wifi_password" = "请输入WIFI密码";
+"wifi_password_format_error" = "WIFI密码格式错误";
+
+"remote" = "遥控";
+"hall" = "大厅";
+"window" = "窗户";
+"balcony" = "阳台";
+"bedroom" = "卧室";
+"kitchen" = "厨房";
+"courtyard" = "庭院";
+"door_lock" = "门锁";
+"other" = "其它";
+
+"clear_defence_prompt" = "确定清除此通道?";
+"learn_defence_prompt" = "点击确定，触发将要学习的无线设备";
+
+"device_not_support_defence_area" = "当前设备不支持防区";
+
+"bind_phone" = "绑定手机号码";
+"input_phone" = "请输入您的手机号码";
+
+"china" = "中国";
+"america" = "美国";
+
+"phone_length_error" = "手机号码长度必需在6-15个字符";
+
+"phone_used" = "手机号码已被使用";
+"get_phone_code_too_times" = "获取手机验证码太频繁，请稍后再试";
+"phone_format_error" = "手机号码格式错误";
+
+"phone_code_was_send_to" = "手机验证码已发送至";
+"phone_check_code" = "手机验证码";
+
+"choose_country" = "选择国家";
+
+"email_id_login" = "邮箱/用户ID";
+"phone_login" = "手机号码";
+
+
+"register_success_prompt" = "恭喜您，注册成功！";
+
+
+"create_init_password_prompt" = "当前设备未设置密码，请创建一个密码";
+
+"device_already_exist_password" = "添加失败，设备已存在初始密码";
+
+"call_in_prompt" = "来自";
+"call_out_prompt" = "正在呼叫";
+"monitor_out_prompt" = "正在连接...";
+
+"net_warning_prompt" = "当前网络不可用，请检查您的网络设置";
+
+"now_version_is_latest" = "当前设备为最新版本";
+"other_was_check_device_update" = "设备繁忙";
+"device_not_support" = "设备不支持";
+
+"send" = "发送";
+
+"alarm_history" = "报警记录";
+"alarm_device" = "设备 :";
+"alarm_type" = "类型 :";
+
+"input_message" = "请输入消息";
+"message_too_long" = "消息太长";
+"can_not_send_message_to_myself" = "不能给自己发消息";
+"send_failure" = "发送失败";
+
+"device" = "设备";
+"view" = "查看";
+"extern_alarm" = "外部报警";
+"motion_dect_alarm" = "移动侦测";
+"emergency_alarm" = "紧急报警";
+"ext_line_alarm" = "有线报警";
+"low_vol_alarm" = "低电压报警";
+"pir_alarm" = "人体红外报警";
+
+"forget_password" = "忘记密码?";
+
+"device_password_too_long" = "设备密码长度不能超过10个字符";
+"password_zero_format_error" = "设备密码必须是非\'0\'开头的数字组合";
+"password_number_format_error" = "设备密码只能由0-9数字组成";
+
+
+"input_ssid" = "请输入WIFI-SSID";
+
+"discovered" = "发现";
+"new_device" = "个新设备";
+"local_device_list" = "新设备列表";
+
+"device_id_zero_format_error" = "设备ID无效";
+
+"id_unknown_error" = "未知原因";
+"id_overdate" = "对方ID已过期";
+"id_disabled" = "对方ID被禁用";
+"id_inactived" = "对方ID未激活";
+"id_offline" = "设备离线";
+"id_busy" = "设备繁忙";
+"id_powerdown" = "对方关机";
+"id_connect_failed" = "连接失败";
+"id_hangup" = "挂断";
+"id_timeout" = "连接超时";
+"id_internal_error" = "内部错误";
+"id_no_accept" = "无人接听";
+"id_password_error" = "设备密码错误";
+"id_not_support" = "设备不支持";
+
+"cur_version_is" = "当前版本为";
+"can_update_to" = "可升级至";
+"can_update_sd" = "能够从SD卡升级";
+"start_update" = "开始更新";
+"update_failed" = "更新失败";
+"cancel_update" = "取消更新";
+
+"loading" = "加载中...";
+"cur_version" = "当前版本";
+"kernel_version" = "内核版本";
+"rootfs_version" = "系统版本";
+"uboot_version" = "uBoot版本";
+
+"device_info" = "设备信息";
+
+"release_new_version"="新版本已经发布";
+"ask_update_immediately"="您想立刻升级么？";
+"remain_me"="下次提醒";
+"update_me"="立刻升级";
+"skip_me"="跳过此版本";
+"rate_me"="为我评分";
+"latest_version"="当前已是最新版本";
+"quit_update"="不需要升级";
+
+"no_init_password_device" = "未设置密码设备";
+
+"defence_group" = "防区";
+"defence_item" = "通道";
+"already_learn" = "已被学习";
+"learning" = "学习中...";
+"clearing" = "清除中...";
+
+"qrcode_add" = "智能联机";
+"add_new_device" = "添加新设备";
+"qrcode" = "二维码配置WIFI";
+"help" = "帮助";
+
+"add_device" = "添加设备";
+
+"empty_contact_prompt" = "这里还是空的哦！您需要添加设备才能查看视频，赶快行动吧～";
+"manually_add" = "手动添加";
+
+
+"set_scanning_code_prompt" = "请将摄像头对准二维码，直到听到叮的一声";
+"heard" = "听到了";
+"waiting_content_prompt" = "等待设备连接WiFi";
+"set_wifi_failed_title" = "连接失败提示";
+"set_wifi_failed_prompt" = "1.手机与设备不在同一局域网内\n2.设备连接WiFi不成功";
+"set_wifi_success_title" = "嘿嘿！设置成功！";
+
+"qrcode_prompt" = "请将摄像头对准二维码，保持20-30cm，直到听到叮的一声，是否听到？";
+
+"modify_visitor_password" = "设置访客密码";
+"auto_update" = "自动升级";
+
+"accept_alarm" = "接收报警消息";
+"human_infrared" = "人体红外开关";
+"wired_alarm_input" = "有线报警输入";
+"wired_alarm_output" = "有线报警输出";
+"image_inversion" = "图像倒转";
+
+"input_new_visitor_password" = "请输入访客密码";
+
+
+"anonymous" = "匿名";
+
+"remote_record_switch" = "录像开关";
+
+"modify_manager_password" = "设置管理密码";
+
+"SD" = "标清";
+"LD" = "流畅";
+"HD" = "高清";
+"number_viewer" = "当前观看人数:";
+
+"time_zone_set" = "时区设置";
+
+/*
+ * new translations(2014.12.20)
+ */
+"new_account_register" = "注册";
+"phone_register" = "手机注册";
+"email_register" = "邮箱注册";
+"register_account" = "注册向导";
+
+"storage_info" = "存储信息";
+"sd_card_capacity" = "SD卡容量:";
+"sd_card_rem_capacity" = "SD卡剩余容量:";
+"u_disk_capacity" = "U盘容量:";
+"u_disk_rem_capacity" = "U盘剩余容量:";
+"sd_card_format" = "SD卡格式化";
+"no_storage" = "没有发现存储设备";
+"not_support_format" = "设备不支持格式化";
+"sd_format_success" = "SD卡格式化成功";
+"format_sd_card" = "格式化SD卡";
+"confirm_format" = "要清空SD卡吗？如果这样做，您会丢失其中存储的全部数据！";
+
+"device_not_support_sensor_switch" = "当前设备不支持传感器开关";
+"learn_code" = "学习对码";
+
+"no_record" = "暂无记录";
+"no_more_record" = "没有更多记录了";
+
+"debug_alarm" = "调试报警";
+"defence_alarm" = "布防报警";
+"defence_disable_alarm" = "撤防报警";
+"battery_low_vol" = "电池低电";
+"update_to_ser" = "参数上传服务器";
+
+/*
+ * new translations(2015.02.10)
+ */
+"send_request_fail" = "发送请求失败";
+"get_data_fail" = "获取数据失败";
+"mall_id_unexist" = "商城ID不存在";
+"invalid_link" = "链接无效";
+"message_item" = "消息";
+"screen_shot_item" = "影像";
+"more_item" = "更多";
+"alarm_message" = "报警消息";
+"system_message" = "系统消息";
+"open" = "打开";//推送消息
+
+"somebody_visit" = "有人来访";
+
+"scan_prompt01" = "摄像机需要连接的WIFI";
+"add_tab_title00" = "智能联机";
+"add_tab_title01" = "二维码";
+"add_guard_text00" = "欢迎使用,您需要准备好";
+"add_guard_text01" = "智能摄像机";
+"add_guard_text02" = "连接电源";
+"add_guard_text03" = "网络WIFI";
+"add_guard_text04" = "温馨提示:\n您需要先将您的手机或者平板连接至WIFI网络.";
+"add_guard_text05" = "不再提示";
+"add_guard_text06" = "连接好电源";
+"add_guard_text07" = "接通电源，等待摄像头发出连接提示音;\n如果没有听到连接提示音，请将摄像头复位";
+
+"qrcode_prompt01" = "请等待设备连接;\n直到听到叮的一声，是否听到？";
+
+"waiting_content_prompt01" = "等待连接";
+"waiting_content_prompt02" = "正在连接中...\n请耐心等待,马上就要连接成功了.";
+
+"connection_failure" = "连接失败";
+"failure_reason" = "可能的原因:\n1.输入错误的wifi密码\n2.摄像头不支持5G网络\n3.当前网络环境较差";
+"try_again" = "再试一次";
+
+"link_wifi" = "请先将手机或平板连接至WIFI";
+
+/*
+ * new translations(2015.04.30)
+ */
+"not_support_operation" = "设备不支持此操作";
+"too_frequent" = "操作过于频繁";
+"not_open" = "该GPIO未开放";
+"door_bell" = "门铃";
+"confirm_open" = "确认开门?";
+
+"no_alarm_push_id" = "无报警推送账号";
+"no_next_files" = "无下一个文件";
+"no_previous_files" = "无上一个文件";
+
+"add_by_qrcode" = "试试二维码添加";
+
+//app更新
+"can_update_to" = "可更新至";
+"version" = "版本";
+"next_time" = "下次再说";
+"update_now" = "立即更新";
+
+"no_playback_file" = "没有搜索到回放文件";
+
+"pwd_too_simple" = "密码过于简单";
+
+"strong" = "强";
+"general" = "中";
+"weak" = "弱";
+
+"logging" = "正在登录";
